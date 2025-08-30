@@ -110,10 +110,10 @@
         /* Título romántico superior */
         .romantic-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: #ff6b9d;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
             animation: romantic-glow 3s ease-in-out infinite alternate;
             z-index: 15;
@@ -130,61 +130,40 @@
             }
         }
 
-        /* Tarjeta principal */
-        .card-container {
-            perspective: 1200px;
-            z-index: 10;
-        }
-
+        /* Tarjeta principal - SIMPLE Y ELEGANTE */
         .birthday-card {
-            width: 420px;
-            height: 580px;
-            position: relative;
-            -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-            -webkit-transition: -webkit-transform 1.5s ease-in-out;
-            transition: transform 1.5s ease-in-out;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .birthday-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255, 107, 157, 0.3);
-        }
-
-        .birthday-card.opened {
-            -webkit-transform: rotateY(-180deg);
-            transform: rotateY(-180deg);
-        }
-
-        .birthday-card.opened:hover {
-            -webkit-transform: rotateY(-180deg) translateY(-5px);
-            transform: rotateY(-180deg) translateY(-5px);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 30px rgba(255, 107, 157, 0.2);
-            transition: all 1s ease;
-        }
-
-        /* Portada romántica */
-        .card-front {
+            width: 450px;
+            height: 650px;
             background: linear-gradient(135deg, #ff6b9d, #c44569, #f8b500);
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
+            cursor: pointer;
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.4), 
+                0 0 40px rgba(255, 107, 157, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
             overflow: hidden;
+            z-index: 10;
+        }
+
+        .birthday-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 
+                0 40px 80px rgba(0,0,0,0.5), 
+                0 0 60px rgba(255, 107, 157, 0.5),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 5px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .birthday-card:active {
+            transform: translateY(-5px) scale(1.01);
+            transition: all 0.1s ease;
         }
 
         /* Decoración superior tipo kimono */
@@ -193,68 +172,69 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 120px;
+            height: 150px;
             background: linear-gradient(45deg, #e55039, #eb2f06, #fa4299);
-            clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
             opacity: 0.9;
         }
 
         /* Espada mejorada */
         .nichirin-blade {
             position: absolute;
-            top: 40px;
-            right: 40px;
-            width: 100px;
-            height: 12px;
+            top: 50px;
+            right: 50px;
+            width: 120px;
+            height: 15px;
             background: linear-gradient(90deg, #c0c0c0, #ffd700, #ff6b9d);
-            border-radius: 6px;
+            border-radius: 8px;
             transform: rotate(45deg);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
             animation: blade-shine 4s ease-in-out infinite;
         }
 
         .nichirin-blade::before {
             content: '';
             position: absolute;
-            left: -25px;
-            top: -15px;
-            width: 40px;
-            height: 40px;
+            left: -30px;
+            top: -20px;
+            width: 50px;
+            height: 50px;
             background: radial-gradient(circle, #8B4513, #D2691E);
             border-radius: 50%;
-            border: 3px solid #ffd700;
+            border: 4px solid #ffd700;
         }
 
         @keyframes blade-shine {
-            0%, 100% { box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); }
-            50% { box-shadow: 0 4px 25px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 107, 157, 0.5); }
+            0%, 100% { box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 4px 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 157, 0.7); }
         }
 
         /* Título principal romántico */
         .main-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.8em;
+            font-size: 3.5em;
             font-weight: 700;
             color: white;
             text-align: center;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-            margin: 40px 0 20px 0;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            margin: 60px 0 30px 0;
             z-index: 2;
-            animation: title-pulse 2s ease-in-out infinite alternate;
+            animation: title-pulse 2.5s ease-in-out infinite alternate;
+            line-height: 1.1;
         }
 
         @keyframes title-pulse {
             0% { 
                 transform: scale(1);
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+                text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
             }
             100% { 
                 transform: scale(1.05);
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.5);
+                text-shadow: 4px 4px 8px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.6);
             }
         }
 
-        /* Corazones flotantes */
+        /* Corazones flotantes mejorados */
         .heart-container {
             position: absolute;
             width: 100%;
@@ -266,16 +246,17 @@
 
         .floating-heart {
             position: absolute;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 24px;
             animation: heart-float 6s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.8);
         }
 
         @keyframes heart-float {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
-            25% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
-            50% { transform: translateY(-10px) scale(0.9); opacity: 0.5; }
-            75% { transform: translateY(-30px) scale(1.1); opacity: 0.7; }
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); opacity: 0.6; }
+            25% { transform: translateY(-25px) scale(1.3) rotate(5deg); opacity: 1; }
+            50% { transform: translateY(-15px) scale(0.9) rotate(-3deg); opacity: 0.7; }
+            75% { transform: translateY(-35px) scale(1.2) rotate(3deg); opacity: 0.9; }
         }
 
         /* Patrón decorativo inferior */
@@ -284,160 +265,95 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 100px;
+            height: 120px;
             background: linear-gradient(45deg, #2d3436, #636e72, #74b9ff);
-            clip-path: polygon(0 100%, 100% 100%, 100% 40%, 50% 60%, 0 40%);
+            clip-path: polygon(0 100%, 100% 100%, 100% 50%, 50% 70%, 0 50%);
         }
 
-        /* Instrucción mejorada */
+        /* Instrucción llamativa */
         .click-instruction {
             position: absolute;
-            bottom: 40px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Dancing Script', cursive;
-            font-size: 1.3em;
+            font-size: 1.6em;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
             animation: romantic-pulse 2s ease-in-out infinite;
             z-index: 3;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         @keyframes romantic-pulse {
             0%, 100% { 
-                opacity: 0.8; 
+                opacity: 0.9; 
                 transform: translateX(-50%) scale(1);
+                background: rgba(255, 255, 255, 0.1);
             }
             50% { 
                 opacity: 1; 
-                transform: translateX(-50%) scale(1.1);
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.7), 0 0 15px rgba(255, 182, 193, 0.8);
+                transform: translateX(-50%) scale(1.08);
+                background: rgba(255, 255, 255, 0.2);
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(255, 182, 193, 1);
+                box-shadow: 0 0 25px rgba(255, 107, 157, 0.5);
             }
         }
 
-        /* Interior de la tarjeta */
-        .card-back {
-            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-        }
-
-        /* Patrón de respiración mejorado */
-        .breathing-aura {
+        /* Partículas mágicas */
+        .magic-particle {
             position: absolute;
-            top: 30px;
-            left: 30px;
-            right: 30px;
-            height: 8px;
-            background: linear-gradient(90deg, #ff7675, #74b9ff, #a29bfe, #fd79a8, #ff6b9d);
-            border-radius: 4px;
-            animation: breathing-power 4s ease-in-out infinite;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: particle-float 8s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        @keyframes breathing-power {
+        @keyframes particle-float {
             0%, 100% { 
-                opacity: 0.6; 
-                box-shadow: 0 0 10px rgba(255,255,255,0.3);
+                transform: translateY(0px) translateX(0px) rotate(0deg); 
+                opacity: 0; 
+            }
+            25% { 
+                transform: translateY(-40px) translateX(20px) rotate(90deg); 
+                opacity: 1; 
             }
             50% { 
-                opacity: 1; 
-                box-shadow: 0 0 25px rgba(255,255,255,0.8), 0 0 35px rgba(116, 185, 255, 0.5);
+                transform: translateY(-20px) translateX(-15px) rotate(180deg); 
+                opacity: 0.7; 
+            }
+            75% { 
+                transform: translateY(-50px) translateX(30px) rotate(270deg); 
+                opacity: 0.9; 
             }
         }
-
-        /* Contenido interior romántico */
-        .inside-content h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.8em;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
-            animation: love-glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes love-glow {
-            0% { 
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-                transform: scale(1);
-            }
-            100% { 
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255, 182, 193, 0.8);
-                transform: scale(1.05);
-            }
-        }
-
-        .romantic-message {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2em;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            line-height: 1.8;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .romantic-message .highlight {
-            color: #ff6b9d;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
-        }
-
-        /* Llama del amor */
-        .love-flame {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 70px;
-            background: radial-gradient(ellipse at bottom, #ff6b9d, #ff8e8e, transparent);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            animation: flame-dance 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes flame-dance {
-            0% { 
-                transform: translateX(-50%) scale(1) rotate(-2deg);
-                filter: hue-rotate(0deg);
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.2) rotate(2deg);
-                filter: hue-rotate(20deg);
-            }
-        }
-
-
 
         /* Responsive */
         @media (max-width: 480px) {
             .birthday-card {
-                width: 340px;
-                height: 480px;
+                width: 350px;
+                height: 500px;
             }
             
             .romantic-title {
-                font-size: 2em;
-                margin-bottom: 20px;
+                font-size: 2.2em;
+                margin-bottom: 30px;
             }
             
             .main-title {
-                font-size: 2.2em;
+                font-size: 2.8em;
+                margin: 40px 0 20px 0;
             }
             
-            .inside-content h2 {
-                font-size: 2.2em;
-            }
-            
-            .romantic-message {
-                font-size: 1.1em;
+            .click-instruction {
+                font-size: 1.3em;
+                bottom: 40px;
+                padding: 12px 24px;
             }
         }
     </style>
@@ -451,88 +367,49 @@
     
     <!-- Contenedor principal centrado -->
     <div class="main-container">
-        <h1 class="romantic-title">💖 Algo especial para ti 💖</h1>
+        <h1 class="romantic-title">💖 Algo muy especial para ti 💖</h1>
         
-        <div class="card-container">
-            <div class="birthday-card" id="birthdayCard" onclick="openCard()">
-                <!-- Portada -->
-                <div class="card-front">
-                    <div class="kimono-pattern"></div>
-                    <div class="nichirin-blade"></div>
-                    
-                    <div class="heart-container">
-                        <div class="floating-heart" style="top: 20%; left: 15%; animation-delay: 0s;">💕</div>
-                        <div class="floating-heart" style="top: 30%; right: 20%; animation-delay: 2s;">💖</div>
-                        <div class="floating-heart" style="bottom: 40%; left: 25%; animation-delay: 4s;">💗</div>
-                        <div class="floating-heart" style="bottom: 50%; right: 15%; animation-delay: 1s;">💝</div>
-                    </div>
-                    
-                    <h1 class="main-title">¡Feliz<br>Cumpleaños!</h1>
-                    
-                    <div class="wave-pattern"></div>
-                    <div class="click-instruction">✨ Abre tu corazón ✨</div>
-                </div>
-
-                <!-- Interior -->
-                <div class="card-back">
-                    <div class="breathing-aura"></div>
-                    
-                    <div class="inside-content">
-                        <h2>💕 Para la chica más especial 💕</h2>
-                        
-                        <div class="romantic-message">
-                            Como <span class="highlight">Tanjiro</span> protege a su hermana, yo quiero proteger tu sonrisa cada día.
-                            <br><br>
-                            Que este nuevo año sea tan <span class="highlight">brillante</span> como el sol que ilumina mi mundo cuando estás cerca.
-                            <br><br>
-                            Eres mi <span class="highlight">respiración</span> favorita: la del amor verdadero.
-                            <br><br>
-                            🌸 <em>¡Feliz cumpleaños, mi luz!</em> 🌸
-                        </div>
-                    </div>
-                    
-                    <div class="love-flame"></div>
-                </div>
+        <div class="birthday-card" onclick="abrirTarjeta()">
+            <div class="kimono-pattern"></div>
+            <div class="nichirin-blade"></div>
+            
+            <div class="heart-container">
+                <div class="floating-heart" style="top: 15%; left: 10%; animation-delay: 0s;">💕</div>
+                <div class="floating-heart" style="top: 25%; right: 15%; animation-delay: 2s;">💖</div>
+                <div class="floating-heart" style="bottom: 35%; left: 20%; animation-delay: 4s;">💗</div>
+                <div class="floating-heart" style="bottom: 45%; right: 10%; animation-delay: 1s;">💝</div>
+                <div class="floating-heart" style="top: 40%; left: 50%; animation-delay: 3s;">💘</div>
             </div>
+            
+            <div class="magic-particle" style="top: 20%; left: 25%; animation-delay: 0s;"></div>
+            <div class="magic-particle" style="top: 30%; right: 20%; animation-delay: 2s;"></div>
+            <div class="magic-particle" style="bottom: 40%; left: 15%; animation-delay: 4s;"></div>
+            <div class="magic-particle" style="bottom: 50%; right: 25%; animation-delay: 1s;"></div>
+            <div class="magic-particle" style="top: 60%; left: 70%; animation-delay: 3s;"></div>
+            
+            <h1 class="main-title">¡Feliz<br>Cumpleaños!</h1>
+            
+            <div class="wave-pattern"></div>
+            <div class="click-instruction">✨ Haz clic para abrir tu corazón ✨</div>
         </div>
     </div>
 
-
     <script>
-        let isCardOpen = false;
-        let sakuraInterval;
-        let fireflyInterval;
-
-        // Función para abrir la tarjeta - COMPLETAMENTE ARREGLADA
-        function openCard() {
-            const card = document.getElementById('birthdayCard');
-            console.log('Intentando abrir tarjeta...', isCardOpen);
-            console.log('Elemento encontrado:', card);
-            
-            if (!isCardOpen) {
-                card.classList.add('opened');
-                isCardOpen = true;
-                createMagicalEffect();
-                console.log('Tarjeta abierta - Clases:', card.className);
-                
-                // Forzar el reflow para asegurar que se aplique la animación
-                card.offsetHeight;
-                
-            } else {
-                card.classList.remove('opened');
-                isCardOpen = false;
-                console.log('Tarjeta cerrada - Clases:', card.className);
-            }
-        }
-
-        // Función mejorada para GitHub
-        function saludar() {
-            // Crear efecto de corazones
+        // Función principal - redirige a otra página
+        function abrirTarjeta() {
+            // Crear efecto mágico antes de la transición
             createHeartExplosion();
             
+            // Pequeña pausa para el efecto y luego redirigir
             setTimeout(() => {
-                alert("💖 ¡Esta tarjeta fue hecha con todo mi amor para ti! 💖\n\n🌸 ¡Feliz cumpleaños, hermosa! 🌸");
-            }, 500);
+                // Cambiar 'mensaje.html' por el nombre que quieras para tu segunda página
+                window.location.href = 'mensaje.html';
+            }, 800);
+        }
+
+        // Función compatible con tu código original
+        function saludar() {
+            abrirTarjeta();
         }
 
         // Crear pétalos de sakura
@@ -540,31 +417,33 @@
             const container = document.getElementById('sakuraContainer');
             
             setInterval(() => {
-                const sakura = document.createElement('div');
-                sakura.className = 'sakura';
-                sakura.style.left = Math.random() * 100 + '%';
-                sakura.style.animationDuration = (Math.random() * 6 + 8) + 's';
-                sakura.style.animationDelay = Math.random() * 2 + 's';
-                
-                const colors = ['#ffb3d9', '#ff99cc', '#ff80bf', '#ff66b3'];
-                sakura.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                container.appendChild(sakura);
-                
-                // Remover después de la animación
-                setTimeout(() => {
-                    if (sakura.parentNode) {
-                        sakura.parentNode.removeChild(sakura);
-                    }
-                }, 15000);
-            }, 800);
+                if (container.children.length < 15) { // Límite para performance
+                    const sakura = document.createElement('div');
+                    sakura.className = 'sakura';
+                    sakura.style.left = Math.random() * 100 + '%';
+                    sakura.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                    sakura.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    const colors = ['#ffb3d9', '#ff99cc', '#ff80bf', '#ff66b3', '#ffc0cb'];
+                    sakura.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    container.appendChild(sakura);
+                    
+                    // Remover después de la animación
+                    setTimeout(() => {
+                        if (sakura.parentNode) {
+                            sakura.parentNode.removeChild(sakura);
+                        }
+                    }, 15000);
+                }
+            }, 1200);
         }
 
         // Crear luciérnagas
         function createFireflies() {
             const body = document.body;
             
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 12; i++) {
                 setTimeout(() => {
                     const firefly = document.createElement('div');
                     firefly.className = 'firefly';
@@ -574,79 +453,28 @@
                     firefly.style.animationDuration = (Math.random() * 4 + 6) + 's';
                     
                     body.appendChild(firefly);
-                }, i * 200);
+                }, i * 300);
             }
         }
 
-        // Efecto mágico al abrir
-        function createMagicalEffect() {
-            const colors = ['#ff6b9d', '#ff99cc', '#74b9ff', '#a29bfe', '#fd79a8'];
-            
-            for (let i = 0; i < 12; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.style.position = 'fixed';
-                    sparkle.style.left = '50%';
-                    sparkle.style.top = '50%';
-                    sparkle.style.width = '8px';
-                    sparkle.style.height = '8px';
-                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    sparkle.style.borderRadius = '50%';
-                    sparkle.style.pointerEvents = 'none';
-                    sparkle.style.zIndex = '100';
-                    sparkle.style.boxShadow = '0 0 10px currentColor';
-                    
-                    const angle = (i / 12) * 2 * Math.PI;
-                    const distance = 100;
-                    const x = Math.cos(angle) * distance;
-                    const y = Math.sin(angle) * distance;
-                    
-                    sparkle.animate([
-                        { 
-                            transform: 'translate(-50%, -50%) scale(0)',
-                            opacity: 1
-                        },
-                        { 
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1)`,
-                            opacity: 0.8
-                        },
-                        { 
-                            transform: `translate(calc(-50% + ${x * 2}px), calc(-50% + ${y * 2}px)) scale(0)`,
-                            opacity: 0
-                        }
-                    ], {
-                        duration: 1500,
-                        easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
-                    });
-                    
-                    document.body.appendChild(sparkle);
-                    
-                    setTimeout(() => {
-                        if (sparkle.parentNode) {
-                            sparkle.parentNode.removeChild(sparkle);
-                        }
-                    }, 1500);
-                }, i * 100);
-            }
-        }
-
-        // Explosión de corazones
+        // Explosión de corazones al hacer clic
         function createHeartExplosion() {
-            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓'];
+            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '💌', '🌸', '✨'];
             
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 25; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
                     heart.style.position = 'fixed';
                     heart.style.left = '50%';
                     heart.style.top = '50%';
-                    heart.style.fontSize = '24px';
+                    heart.style.fontSize = Math.random() * 20 + 20 + 'px';
                     heart.style.pointerEvents = 'none';
                     heart.style.zIndex = '1000';
+                    heart.style.textShadow = '0 0 10px rgba(255, 107, 157, 0.8)';
                     
-                    const angle = (i / 20) * 2 * Math.PI;
-                    const distance = Math.random() * 200 + 100;
+                    const angle = (i / 25) * 2 * Math.PI;
+                    const distance = Math.random() * 250 + 150;
                     const x = Math.cos(angle) * distance;
                     const y = Math.sin(angle) * distance;
                     
@@ -656,15 +484,15 @@
                             opacity: 1
                         },
                         { 
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1) rotate(180deg)`,
-                            opacity: 0.8
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.2) rotate(180deg)`,
+                            opacity: 0.9
                         },
                         { 
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y + 100}px)) scale(0) rotate(360deg)`,
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y + 150}px)) scale(0) rotate(360deg)`,
                             opacity: 0
                         }
                     ], {
-                        duration: 3000,
+                        duration: 2500,
                         easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
                     });
                     
@@ -674,8 +502,8 @@
                         if (heart.parentNode) {
                             heart.parentNode.removeChild(heart);
                         }
-                    }, 3000);
-                }, i * 150);
+                    }, 2500);
+                }, i * 100);
             }
         }
 
@@ -684,25 +512,41 @@
             createSakura();
             createFireflies();
             
-            // Efecto inicial de bienvenida
+            // Efecto de bienvenida
             setTimeout(() => {
-                createMagicalEffect();
-            }, 1000);
+                // Pequeña explosión de bienvenida
+                const welcomeHearts = ['💖', '🌸', '✨'];
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.textContent = welcomeHearts[Math.floor(Math.random() * welcomeHearts.length)];
+                        heart.style.position = 'fixed';
+                        heart.style.left = Math.random() * 100 + '%';
+                        heart.style.top = '10%';
+                        heart.style.fontSize = '20px';
+                        heart.style.pointerEvents = 'none';
+                        heart.style.zIndex = '100';
+                        
+                        heart.animate([
+                            { opacity: 0, transform: 'translateY(0px)' },
+                            { opacity: 1, transform: 'translateY(100px)' },
+                            { opacity: 0, transform: 'translateY(200px)' }
+                        ], {
+                            duration: 3000,
+                            easing: 'ease-out'
+                        });
+                        
+                        document.body.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            if (heart.parentNode) {
+                                heart.parentNode.removeChild(heart);
+                            }
+                        }, 3000);
+                    }, i * 200);
+                }
+            }, 1500);
         }
-
-        // Efecto al hacer hover sobre la tarjeta - SIMPLIFICADO
-        document.addEventListener('DOMContentLoaded', function() {
-            const card = document.getElementById('birthdayCard');
-            
-            // Asegurar que el evento click funcione
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                openCard();
-            });
-            
-            console.log('Event listeners agregados correctamente');
-        });
     </script>
 </body>
 </html>
