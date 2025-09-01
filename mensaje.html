@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para la chica más especial 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: romanticGradient 12s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes romanticGradient {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Corazones flotantes de fondo */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-bg {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 30px;
+            animation: heartFloat 15s ease-in-out infinite;
+        }
+
+        @keyframes heartFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Llamas danzantes */
+        .flame-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .flame {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background: radial-gradient(ellipse at bottom, #ff6b9d, #ff8e8e, transparent);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flameDance 3s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes flameDance {
+            0%, 100% { 
+                transform: scale(1) rotate(-2deg);
+                filter: hue-rotate(0deg);
+            }
+            33% { 
+                transform: scale(1.3) rotate(2deg);
+                filter: hue-rotate(30deg);
+            }
+            66% { 
+                transform: scale(0.8) rotate(-3deg);
+                filter: hue-rotate(-20deg);
+            }
+        }
+
+        /* Partículas mágicas */
+        .magic-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #fff, #ff6b9d);
+            border-radius: 50%;
+            animation: magicFloat 8s linear infinite;
+        }
+
+        @keyframes magicFloat {
+            0% { 
+                transform: translateY(100vh) translateX(0px) scale(0);
+                opacity: 0;
+            }
+            10% { 
+                opacity: 1;
+                transform: translateY(90vh) translateX(20px) scale(1);
+            }
+            90% { 
+                opacity: 1;
+                transform: translateY(10vh) translateX(-20px) scale(1);
+            }
+            100% { 
+                transform: translateY(-10vh) translateX(0px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Container principal */
+        .message-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Título principal super romántico */
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5em;
+            color: white;
+            text-align: center;
+            text-shadow: 
+                3px 3px 6px rgba(0,0,0,0.5),
+                0 0 30px rgba(255, 107, 157, 0.8),
+                0 0 50px rgba(255, 182, 193, 0.5);
+            margin-bottom: 50px;
+            animation: titleGlow 4s ease-in-out infinite alternate;
+            z-index: 15;
+        }
+
+        @keyframes titleGlow {
+            0% { 
+                transform: scale(1);
+                text-shadow: 
+                    3px 3px 6px rgba(0,0,0,0.5),
+                    0 0 30px rgba(255, 107, 157, 0.8),
+                    0 0 50px rgba(255, 182, 193, 0.5);
+            }
+            100% { 
+                transform: scale(1.08);
+                text-shadow: 
+                    3px 3px 6px rgba(0,0,0,0.5),
+                    0 0 40px rgba(255, 107, 157, 1),
+                    0 0 70px rgba(255, 182, 193, 0.8),
+                    0 0 100px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        /* Mensaje romántico principal */
+        .romantic-message {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 30px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.3),
+                0 0 50px rgba(255, 107, 157, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: messageFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes messageFloat {
+            0%, 100% { 
+                transform: translateY(0px);
+                box-shadow: 
+                    0 20px 40px rgba(0,0,0,0.3),
+                    0 0 50px rgba(255, 107, 157, 0.2),
+                    inset 0 1px 0 rgba(255,255,255,0.2);
+            }
+            50% { 
+                transform: translateY(-10px);
+                box-shadow: 
+                    0 30px 50px rgba(0,0,0,0.4),
+                    0 0 70px rgba(255, 107, 157, 0.4),
+                    inset 0 1px 0 rgba(255,255,255,0.3);
+            }
+        }
+
+        .message-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4em;
+            line-height: 2;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        .message-text .highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            color: #ff6b9d;
+            font-weight: 700;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.5),
+                0 0 15px rgba(255, 107, 157, 0.8);
+            display: inline-block;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { 
+                text-shadow: 
+                    2px 2px 4px rgba(0,0,0,0.5),
+                    0 0 15px rgba(255, 107, 157, 0.8);
+            }
+            100% { 
+                text-shadow: 
+                    2px 2px 4px rgba(0,0,0,0.5),
+                    0 0 25px rgba(255, 107, 157, 1),
+                    0 0 35px rgba(255, 182, 193, 0.8);
+            }
+        }
+
+        /* Firma especial */
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2em;
+            color: #ff6b9d;
+            text-align: center;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.5),
+                0 0 20px rgba(255, 107, 157, 0.8);
+            margin-top: 40px;
+            animation: signatureGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes signatureGlow {
+            0% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
+            }
+            100% { 
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 20px rgba(255, 107, 157, 1));
+            }
+        }
+
+        /* Botón de regreso elegante */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 107, 157, 0.3));
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            z-index: 20;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 107, 157, 0.5));
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Decoraciones especiales */
+        .demon-slayer-pattern {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 157, 0.1));
+            clip-path: polygon(100% 0, 100% 70%, 30% 100%, 0 30%);
+            z-index: 4;
+        }
+
+        .demon-slayer-pattern-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 150px;
+            background: linear-gradient(135deg, transparent, rgba(116, 185, 255, 0.1));
+            clip-path: polygon(0 100%, 70% 100%, 100% 30%, 30% 0);
+            z-index: 4;
+        }
+
+        /* Respiración visual */
+        .breathing-aura {
+            position: fixed;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: linear-gradient(90deg, #ff7675, #74b9ff, #a29bfe, #fd79a8, #ff6b9d);
+            border-radius: 5px;
+            animation: breathingPower 5s ease-in-out infinite;
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        @keyframes breathingPower {
+            0%, 100% { 
+                opacity: 0.3;
+                box-shadow: 0 0 10px rgba(255,255,255,0.2);
+                transform: translateX(-50%) scaleX(1);
+            }
+            50% { 
+                opacity: 1;
+                box-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 50px rgba(116, 185, 255, 0.5);
+                transform: translateX(-50%) scaleX(1.1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3em;
+                margin-bottom: 30px;
+            }
+            
+            .romantic-message {
+                padding: 30px;
+                margin: 20px;
+            }
+            
+            .message-text {
+                font-size: 1.2em;
+                line-height: 1.8;
+            }
+            
+            .signature {
+                font-size: 1.8em;
+                margin-top: 30px;
+            }
+            
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de fondo -->
+    <div class="floating-hearts" id="heartsBg"></div>
+    <div class="flame-container" id="flames"></div>
+    <div class="magic-particles" id="particles"></div>
+    
+    <!-- Decoraciones -->
+    <div class="demon-slayer-pattern"></div>
+    <div class="demon-slayer-pattern-bottom"></div>
+    <div class="breathing-aura"></div>
+    
+    <!-- Botón de regreso -->
+    <a href="javascript:history.back()" class="back-button">
+        <span>🌸</span> Regresar
+    </a>
+    
+    <!-- Contenido principal -->
+    <div class="message-container">
+        <h1 class="main-title">Para la chica más hermosa del mundo 💖</h1>
+        
+        <div class="romantic-message">
+            <div class="message-text">
+                Como <span class="highlight">Tanjiro</span> protege con su vida lo que más ama, 
+                yo quiero proteger tu sonrisa cada amanecer. 🌅
+                <br><br>
+                
+                Tu presencia ilumina mis días como el <span class="highlight">Sol</span> 
+                que da fuerza a los Cazadores de Demonios. ☀️
+                <br><br>
+                
+                Eres mi <span class="highlight">respiración del amor total</span>, 
+                la técnica más poderosa que existe en mi corazón. 💫
+                <br><br>
+                
+                Que este nuevo año de vida esté lleno de aventuras tan épicas 
+                como las que vivimos juntos, y que cada día sea una 
+                <span class="highlight">victoria sobre la tristeza</span>. ⚔️
+                <br><br>
+                
+                <span class="highlight">Eres mi luz en la oscuridad</span>, 
+                mi razón para ser fuerte, mi <span class="highlight">felicidad eterna</span>. 
+                <br><br>
+                
+                🌸 <em>¡Feliz cumpleaños, mi amor verdadero!</em> 🌸
+            </div>
+            
+            <div class="signature">
+                Con todo mi corazón,<br>
+                Tu Cazador de Demonios favorito 💕
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones de fondo
+        function createBackgroundHearts() {
+            const container = document.getElementById('heartsBg');
+            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '🌸'];
+            
+            setInterval(() => {
+                if (container.children.length < 8) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-bg';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 25) + 'px';
+                    
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    }, 20000);
+                }
+            }, 2000);
+        }
+
+        // Crear llamas danzantes
+        function createFlames() {
+            const container = document.getElementById('flames');
+            
+            for (let i = 0; i < 15; i++) {
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                flame.style.left = (i * 8) + '%';
+                flame.style.animationDelay = (i * 0.3) + 's';
+                flame.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                
+                // Colores aleatorios de llama
+                const colors = [
+                    'radial-gradient(ellipse at bottom, #ff6b9d, #ff8e8e, transparent)',
+                    'radial-gradient(ellipse at bottom, #74b9ff, #a29bfe, transparent)',
+                    'radial-gradient(ellipse at bottom, #fd79a8, #fdcb6e, transparent)'
+                ];
+                flame.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(flame);
+            }
+        }
+
+        // Crear partículas mágicas
+        function createMagicParticles() {
+            const container = document.getElementById('particles');
+            
+            setInterval(() => {
+                if (container.children.length < 20) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (Math.random() * 5 + 6) + 's';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    const sizes = ['6px', '8px', '10px'];
+                    const size = sizes[Math.floor(Math.random() * sizes.length)];
+                    particle.style.width = size;
+                    particle.style.height = size;
+                    
+                    container.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 12000);
+                }
+            }, 800);
+        }
+
+        // Efecto de entrada espectacular
+        function createEntranceEffect() {
+            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '🌸', '✨', '⭐'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = Math.random() * 30 + 25 + 'px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.textShadow = '0 0 20px rgba(255, 107, 157, 1)';
+                    
+                    const angle = (i / 30) * 2 * Math.PI;
+                    const distance = Math.random() * 300 + 200;
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+                    
+                    heart.animate([
+                        { 
+                            transform: 'translate(-50%, -50%) scale(0) rotate(0deg)',
+                            opacity: 0
+                        },
+                        { 
+                            transform: 'translate(-50%, -50%) scale(1.5) rotate(180deg)',
+                            opacity: 1
+                        },
+                        { 
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1) rotate(360deg)`,
+                            opacity: 0.8
+                        },
+                        { 
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y + 200}px)) scale(0) rotate(540deg)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: 4000,
+                        easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
+                    });
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    }, 4000);
+                }, i * 150);
+            }
+        }
+
+        // Función de compatibilidad
+        function saludar() {
+            alert("💖 ¡Espero que este mensaje haya tocado tu corazón! 💖\n\n🌸 Con todo mi amor 🌸");
+        }
+
+        // Inicializar todo
+        window.onload = function() {
+            createBackgroundHearts();
+            createFlames();
+            createMagicParticles();
+            
+            // Efecto de entrada después de un momento
+            setTimeout(() => {
+                createEntranceEffect();
+            }, 500);
+        }
+
+        // Efecto al hacer scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            document.querySelector('.breathing-aura').style.transform = `translateX(-50%) translateY(${rate}px)`;
+        });
+    </script>
+</body>
+</html>

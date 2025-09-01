@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Kimetsu no Yaiba 🔥</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460, #e55039);
+            background-size: 400% 400%;
+            animation: quizGradient 10s ease infinite;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(116, 185, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes quizGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Imagen en esquina superior derecha */
+        .character-image {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 150px;
+            height: 200px;
+            border: 3px solid rgba(255, 107, 157, 0.6);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                0 0 30px rgba(255, 107, 157, 0.3);
+            z-index: 50;
+            animation: imageFloat 4s ease-in-out infinite;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 17px;
+        }
+
+        .character-image::before {
+            content: 'Imagen de personaje';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 107, 157, 0.2);
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+            line-height: 1.3;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .character-image img ~ * {
+            display: none;
+        }
+
+        @keyframes imageFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                box-shadow: 
+                    0 15px 35px rgba(0,0,0,0.3),
+                    0 0 30px rgba(255, 107, 157, 0.3);
+            }
+            50% { 
+                transform: translateY(-10px) rotate(1deg);
+                box-shadow: 
+                    0 20px 45px rgba(0,0,0,0.4),
+                    0 0 45px rgba(255, 107, 157, 0.5);
+            }
+        }
+
+        /* Efectos temáticos de Kimetsu */
+        .demon-slayer-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .nichirin-glow {
+            position: absolute;
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff6b9d, 
+                #74b9ff, 
+                #ffd700, 
+                #ff6b9d, 
+                transparent
+            );
+            animation: swordGlow 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        .glow-1 { top: 15%; left: -100px; animation-delay: 0s; }
+        .glow-2 { top: 35%; right: -100px; animation-delay: 2s; transform: rotate(45deg); }
+        .glow-3 { top: 55%; left: -100px; animation-delay: 4s; transform: rotate(-30deg); }
+        .glow-4 { top: 75%; right: -100px; animation-delay: 1s; }
+
+        @keyframes swordGlow {
+            0% { transform: translateX(0px) scaleX(0); }
+            50% { transform: translateX(50vw) scaleX(1); }
+            100% { transform: translateX(100vw) scaleX(0); }
+        }
+
+        /* Patrón tipo haori */
+        .haori-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(45deg, 
+                rgba(255, 107, 157, 0.1) 25%, 
+                transparent 25%, 
+                transparent 50%, 
+                rgba(116, 185, 255, 0.1) 50%, 
+                rgba(116, 185, 255, 0.1) 75%, 
+                transparent 75%
+            );
+            background-size: 40px 40px;
+            animation: patternSlide 20s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes patternSlide {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        /* Efectos de respiración mejorados */
+        .breathing-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .breathing-wave {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff7675, #74b9ff, #a29bfe, #fd79a8);
+            animation: breathingFlow 4s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+        }
+
+        .wave-1 { top: 20%; animation-delay: 0s; }
+        .wave-2 { top: 40%; animation-delay: 1s; }
+        .wave-3 { top: 60%; animation-delay: 2s; }
+        .wave-4 { top: 80%; animation-delay: 3s; }
+
+        @keyframes breathingFlow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scaleX(1);
+                box-shadow: 0 0 10px rgba(255,255,255,0.2);
+            }
+            50% { 
+                opacity: 1;
+                transform: scaleX(1.2);
+                box-shadow: 0 0 30px rgba(116, 185, 255, 0.8);
+            }
+        }
+
+        /* Container principal */
+        .quiz-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 40px 20px;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Mensaje inicial */
+        .intro-message {
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 107, 157, 0.4);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.3),
+                0 0 50px rgba(255, 107, 157, 0.2);
+            animation: introFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes introFloat {
+            0%, 100% { 
+                transform: translateY(0px);
+                box-shadow: 
+                    0 20px 40px rgba(0,0,0,0.3),
+                    0 0 50px rgba(255, 107, 157, 0.2);
+            }
+            50% { 
+                transform: translateY(-8px);
+                box-shadow: 
+                    0 25px 50px rgba(0,0,0,0.4),
+                    0 0 70px rgba(255, 107, 157, 0.4);
+            }
+        }
+
+        .intro-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.8);
+        }
+
+        .intro-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Quiz container con temática demon slayer */
+        .quiz-box {
+            max-width: 800px;
+            width: 100%;
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.7), rgba(255, 107, 157, 0.1)),
+                rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(255, 107, 157, 0.4);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.4),
+                0 0 60px rgba(255, 107, 157, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, 
+                #ff6b9d, #74b9ff, #ffd700, #ff6b9d, #74b9ff
+            );
+            background-size: 200% 100%;
+            animation: borderFlow 4s linear infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Patrón decorativo de espadas */
+        .sword-decoration {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 6px;
+            background: linear-gradient(90deg, #c0c0c0, #ffd700);
+            border-radius: 3px;
+            transform: rotate(45deg);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            animation: swordGlint 3s ease-in-out infinite;
+        }
+
+        .sword-decoration::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: -8px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #8B4513, #D2691E);
+            border-radius: 50%;
+            border: 2px solid #ffd700;
+        }
+
+        @keyframes swordGlint {
+            0%, 100% { 
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+                filter: brightness(1);
+            }
+            50% { 
+                box-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 157, 0.7);
+                filter: brightness(1.3);
+            }
+        }
+
+        .question {
+            display: none;
+            animation: questionAppear 0.5s ease-in-out;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        @keyframes questionAppear {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8em;
+            color: #ff6b9d;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 
+                0 0 15px rgba(255, 107, 157, 0.6),
+                2px 2px 4px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .question-title::before {
+            content: '⚔️';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            animation: swordSpin 4s linear infinite;
+        }
+
+        .question-title::after {
+            content: '🔥';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            animation: fireFlicker 2s ease-in-out infinite;
+        }
+
+        @keyframes swordSpin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        @keyframes fireFlicker {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateY(-50%) scale(1.2); }
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            line-height: 1.6;
+        }
+
+        .answers {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .answer-btn {
+            background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 107, 157, 0.1)),
+                rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .answer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 107, 157, 0.3), 
+                transparent
+            );
+            transition: left 0.5s ease;
+        }
+
+        .answer-btn:hover::before {
+            left: 100%;
+        }
+
+        .answer-btn:hover {
+            background: rgba(255, 107, 157, 0.3);
+            border-color: rgba(255, 107, 157, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .answer-btn.correct {
+            background: rgba(46, 204, 113, 0.3);
+            border-color: rgba(46, 204, 113, 0.8);
+            animation: correctAnswer 0.6s ease;
+        }
+
+        .answer-btn.incorrect {
+            background: rgba(231, 76, 60, 0.3);
+            border-color: rgba(231, 76, 60, 0.8);
+            animation: incorrectAnswer 0.6s ease;
+        }
+
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); background: rgba(46, 204, 113, 0.5); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes incorrectAnswer {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #74b9ff);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 15px rgba(255, 107, 157, 0.8);
+        }
+
+        .question-counter {
+            text-align: center;
+            font-size: 1.1em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+        }
+
+        .next-btn {
+            background: linear-gradient(45deg, #ff6b9d, #74b9ff);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.5);
+        }
+
+        .next-btn.show {
+            display: block;
+            animation: btnAppear 0.5s ease;
+        }
+
+        @keyframes btnAppear {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Resultados */
+        .results {
+            display: none;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .results.show {
+            display: block;
+            animation: resultsAppear 1s ease;
+        }
+
+        @keyframes resultsAppear {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .score-display {
+            font-size: 3em;
+            color: #ff6b9d;
+            margin: 30px 0;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+            animation: scoreGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes scoreGlow {
+            0% { 
+                text-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 50px rgba(255, 107, 157, 1), 0 0 70px rgba(255, 182, 193, 0.6);
+                transform: scale(1.1);
+            }
+        }
+
+        .result-message {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .final-btn {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .final-btn:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.5);
+        }
+
+        .fail-message {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid rgba(231, 76, 60, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .success-message {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid rgba(46, 204, 113, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        /* Partículas de respuesta correcta */
+        .success-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 25px;
+            animation: successFloat 2s ease-out forwards;
+        }
+
+        @keyframes successFloat {
+            0% { 
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% { 
+                opacity: 0;
+                transform: scale(0.5) rotate(360deg) translateY(-100px);
+            }
+        }
+
+        /* Responsive mejorado */
+        @media (max-width: 768px) {
+            .character-image {
+                width: 120px;
+                height: 160px;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .intro-message {
+                padding: 25px;
+                margin-bottom: 30px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            
+            .intro-title {
+                font-size: 2em;
+            }
+            
+            .intro-text {
+                font-size: 1.1em;
+            }
+            
+            .quiz-box {
+                padding: 25px;
+                margin: 0 10px 20px 10px;
+            }
+            
+            .question-text {
+                font-size: 1.1em;
+            }
+            
+            .answer-btn {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+            
+            .question-title::before,
+            .question-title::after {
+                display: none;
+            }
+            
+            .sword-decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos temáticos de Kimetsu -->
+    <div class="demon-slayer-bg">
+        <div class="nichirin-glow glow-1"></div>
+        <div class="nichirin-glow glow-2"></div>
+        <div class="nichirin-glow glow-3"></div>
+        <div class="nichirin-glow glow-4"></div>
+    </div>
+    
+    <!-- Patrón haori -->
+    <div class="haori-pattern"></div>
+    
+    <!-- Imagen de personaje en esquina superior derecha -->
+    <div class="character-image">
+        <!-- Aquí puedes colocar tu imagen PNG -->
+        <!-- <img src="tu-imagen.png" alt="Personaje Kimetsu"> -->
+    </div>
+
+    <!-- Efectos de respiración -->
+    <div class="breathing-effects">
+        <div class="breathing-wave wave-1"></div>
+        <div class="breathing-wave wave-2"></div>
+        <div class="breathing-wave wave-3"></div>
+        <div class="breathing-wave wave-4"></div>
+    </div>
+
+    <div class="quiz-container">
+        <!-- Mensaje inicial -->
+        <div class="intro-message">
+            <h1 class="intro-title">Antes de abrir la carta... 💕</h1>
+            <p class="intro-text">
+                Tenemos que ver si eres la verdadera <strong>Sol</strong> ☀️<br>
+                Para eso, un quiz de <strong>Kimetsu no Yaiba</strong> ⚔️<br><br>
+                <em>¡Demuestra tu conocimiento, pequeña cazadora!</em> 🌸
+            </p>
+        </div>
+
+        <!-- Quiz container -->
+        <div class="quiz-box">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="question-counter" id="questionCounter">Pregunta 1 de 10</div>
+
+            <!-- Pregunta 1 -->
+            <div class="question active" data-question="1">
+                <h2 class="question-title">⚔️ Pregunta 1</h2>
+                <p class="question-text">¿Cuál es el nombre completo del protagonista de Kimetsu no Yaiba?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Tanjiro Komado</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Tanjiro Kamado</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Tanjirou Kameda</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Tanjiro Yamada</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="question" data-question="2">
+                <h2 class="question-title">👹 Pregunta 2</h2>
+                <p class="question-text">¿Qué demonio convirtió a Nezuko en demonio?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Akaza</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Muzan Kibutsuji</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Rui</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Doma</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="question" data-question="3">
+                <h2 class="question-title">💧 Pregunta 3</h2>
+                <p class="question-text">¿Cuál es la respiración que usa Tanjiro principalmente?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Respiración del Trueno</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Respiración del Agua</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Respiración de la Llama</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Respiración del Viento</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="question" data-question="4">
+                <h2 class="question-title">⚡ Pregunta 4</h2>
+                <p class="question-text">¿Cuántas formas tiene la Respiración del Trueno que domina Zenitsu?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Tres formas</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">b) Cinco formas</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">c) Solo la primera forma</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Todas las formas</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="question" data-question="5">
+                <h2 class="question-title">🐗 Pregunta 5</h2>
+                <p class="question-text">¿Cuál es el nombre real de Inosuke?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Inosuke Yamamoto</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Inosuke Hashibira</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Inosuke Tanaka</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Inosuke Suzuki</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="question" data-question="6">
+                <h2 class="question-title">🌅 Pregunta 6</h2>
+                <p class="question-text">¿Cómo se llama la respiración del Sol?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Respiración Solar</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Danza del Dios del Fuego</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Respiración Dorada</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Técnica del Amanecer</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 7 -->
+            <div class="question" data-question="7">
+                <h2 class="question-title">🦋 Pregunta 7</h2>
+                <p class="question-text">¿Quién es el Pilar de los Insectos?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Kanae Kocho</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Shinobu Kocho</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Kanao Tsuyuri</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Aoi Kanzaki</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 8 -->
+            <div class="question" data-question="8">
+                <h2 class="question-title">🔥 Pregunta 8</h2>
+                <p class="question-text">¿Cuál es el color de la espada Nichirin de Tanjiro?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Azul</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Negro</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Rojo</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Amarillo</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 9 -->
+            <div class="question" data-question="9">
+                <h2 class="question-title">🌙 Pregunta 9</h2>
+                <p class="question-text">¿Cuál es la Luna Superior número 1?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Akaza</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">b) Doma</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">c) Kokushibo</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Gyutaro</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Siguiente 🌸</button>
+            </div>
+
+            <!-- Pregunta 10 -->
+            <div class="question" data-question="10">
+                <h2 class="question-title">🏔️ Pregunta 10</h2>
+                <p class="question-text">¿En qué montaña entrenó Tanjiro con Urokodaki?</p>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">a) Monte Natagumo</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, true)">b) Monte Sagiri</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">c) Monte Fujikasane</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, false)">d) Monte Kumotori</button>
+                </div>
+                <button class="next-btn" onclick="nextQuestion()">Ver resultados 🌸</button>
+            </div>
+
+            <!-- Resultados -->
+            <div class="results" id="results">
+                <div class="score-display" id="scoreDisplay">8/10</div>
+                <div class="result-message" id="resultMessage"></div>
+                <button class="final-btn" id="finalBtn" onclick="handleFinalAction()">
+                    Abrir la carta especial 💖
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+        let answered = false;
+
+        function selectAnswer(button, isCorrect) {
+            if (answered) return;
+            
+            answered = true;
+            const answers = button.parentNode.querySelectorAll('.answer-btn');
+            
+            // Deshabilitar todos los botones
+            answers.forEach(btn => {
+                btn.style.pointerEvents = 'none';
+                if (btn === button) {
+                    if (isCorrect) {
+                        btn.classList.add('correct');
+                        score++;
+                        createSuccessParticles(btn);
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                }
+            });
+
+            // Mostrar botón siguiente después de un momento
+            setTimeout(() => {
+                const nextBtn = button.parentNode.parentNode.querySelector('.next-btn');
+                nextBtn.classList.add('show');
+            }, 1000);
+        }
+
+        function createSuccessParticles(button) {
+            const rect = button.getBoundingClientRect();
+            const particles = ['✨', '⭐', '🌟', '💫', '🔥'];
+            
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'success-particle';
+                    particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+                    particle.style.left = (rect.left + rect.width/2) + 'px';
+                    particle.style.top = (rect.top + rect.height/2) + 'px';
+                    
+                    const angle = (i / 8) * 2 * Math.PI;
+                    const distance = 50;
+                    particle.style.setProperty('--endX', Math.cos(angle) * distance + 'px');
+                    particle.style.setProperty('--endY', Math.sin(angle) * distance + 'px');
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        function nextQuestion() {
+            const currentQ = document.querySelector('.question.active');
+            currentQ.classList.remove('active');
+            
+            currentQuestion++;
+            updateProgress();
+            
+            if (currentQuestion <= 10) {
+                const nextQ = document.querySelector(`[data-question="${currentQuestion}"]`);
+                setTimeout(() => {
+                    nextQ.classList.add('active');
+                    answered = false;
+                }, 300);
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion - 1) / 10) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('questionCounter').textContent = `Pregunta ${currentQuestion} de 10`;
+        }
+
+        function showResults() {
+            document.querySelector('.quiz-box').style.display = 'none';
+            const results = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const resultMessage = document.getElementById('resultMessage');
+            const finalBtn = document.getElementById('finalBtn');
+            
+            scoreDisplay.textContent = `${score}/10`;
+            
+            if (score >= 8) {
+                resultMessage.innerHTML = `
+                    <div class="success-message">
+                        <h3 style="color: #2ecc71; font-family: 'Dancing Script', cursive; font-size: 2em; margin-bottom: 15px;">
+                            ¡Eres la verdadera Sol! ☀️
+                        </h3>
+                        <p style="font-size: 1.2em;">
+                            Has demostrado ser una verdadera conocedora de Kimetsu no Yaiba. 
+                            <br>¡Definitivamente eres mi Sol! 💖
+                            <br><br><em>Ahora puedes abrir tu carta especial...</em> 🌸
+                        </p>
+                    </div>
+                `;
+                finalBtn.textContent = "Abrir mi carta de amor 💖";
+                finalBtn.style.background = "linear-gradient(45deg, #2ecc71, #27ae60)";
+            } else {
+                resultMessage.innerHTML = `
+                    <div class="fail-message">
+                        <h3 style="color: #e74c3c; font-family: 'Dancing Script', cursive; font-size: 2em; margin-bottom: 15px;">
+                            ¡Necesitas estudiar más! 📚
+                        </h3>
+                        <p style="font-size: 1.1em;">
+                            Obtuviste ${score} de 10 puntos. Necesitas al menos 8 para ser la verdadera Sol.
+                            <br><br><em>¡Pero no te preocupes! Siempre serás especial para mí...</em> 💕
+                            <br><br>¿Quieres intentar de nuevo?
+                        </p>
+                    </div>
+                `;
+                finalBtn.textContent = "Intentar de nuevo ⚔️";
+                finalBtn.style.background = "linear-gradient(45deg, #e74c3c, #c0392b)";
+            }
+            
+            results.classList.add('show');
+            
+            // Efecto de confeti si pasó
+            if (score >= 8) {
+                createVictoryEffect();
+            }
+        }
+
+        function handleFinalAction() {
+            if (score >= 8) {
+                // Efecto final y redireccionar a mensaje.html
+                createHeartExplosion();
+                setTimeout(() => {
+                    window.location.href = 'mensaje.html';
+                }, 1000);
+            } else {
+                // Reiniciar quiz
+                location.reload();
+            }
+        }
+
+        function createVictoryEffect() {
+            const symbols = ['🌸', '✨', '💖', '⭐', '🔥', '☀️', '💕', '🌟'];
+            
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const symbol = document.createElement('div');
+                    symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    symbol.style.position = 'fixed';
+                    symbol.style.left = Math.random() * 100 + '%';
+                    symbol.style.top = '-50px';
+                    symbol.style.fontSize = Math.random() * 20 + 20 + 'px';
+                    symbol.style.pointerEvents = 'none';
+                    symbol.style.zIndex = '1000';
+                    symbol.style.textShadow = '0 0 10px rgba(255, 107, 157, 0.8)';
+                    
+                    symbol.animate([
+                        { 
+                            transform: 'translateY(-50px) rotate(0deg)',
+                            opacity: 0
+                        },
+                        { 
+                            transform: 'translateY(30vh) rotate(180deg)',
+                            opacity: 1
+                        },
+                        { 
+                            transform: 'translateY(100vh) rotate(360deg)',
+                            opacity: 0
+                        }
+                    ], {
+                        duration: 4000,
+                        easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
+                    });
+                    
+                    document.body.appendChild(symbol);
+                    
+                    setTimeout(() => {
+                        if (symbol.parentNode) {
+                            symbol.parentNode.removeChild(symbol);
+                        }
+                    }, 4000);
+                }, i * 80);
+            }
+        }
+
+        function createHeartExplosion() {
+            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '💌', '🌸', '✨'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = Math.random() * 25 + 25 + 'px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.textShadow = '0 0 15px rgba(255, 107, 157, 1)';
+                    
+                    const angle = (i / 30) * 2 * Math.PI;
+                    const distance = Math.random() * 300 + 200;
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+                    
+                    heart.animate([
+                        { 
+                            transform: 'translate(-50%, -50%) scale(0)',
+                            opacity: 1
+                        },
+                        { 
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.5)`,
+                            opacity: 0.8
+                        },
+                        { 
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y + 200}px)) scale(0)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: 3000,
+                        easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
+                    });
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+
+        // Función de compatibilidad
+        function saludar() {
+            alert("💖 ¡Completa el quiz para continuar! 💖");
+        }
+
+        // Inicializar
+        window.onload = function() {
+            updateProgress();
+        }
+    </script>
+</body>
+</html>
