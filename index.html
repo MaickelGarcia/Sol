@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorpresa Bloqueada ❤️ - Kimetsu no Yaiba</title>
+    <title>Sorpresa Bloqueada ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;700&display=swap');
         
@@ -25,7 +25,6 @@
             overflow: hidden;
         }
 
-        /* Overlay oscuro para mejor legibilidad */
         body::before {
             content: '';
             position: fixed;
@@ -37,7 +36,6 @@
             z-index: 1;
         }
 
-        /* Partículas flotantes tipo Demon Slayer */
         .particle {
             position: fixed;
             width: 8px;
@@ -69,7 +67,6 @@
             }
         }
 
-        /* Container principal */
         .blocked-container {
             text-align: center;
             color: white;
@@ -88,7 +85,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Título principal */
         .blocked-title {
             font-family: 'Cinzel', serif;
             font-size: 3.2em;
@@ -115,7 +111,6 @@
             }
         }
 
-        /* Mensaje de bloqueo */
         .blocked-message {
             font-family: 'Dancing Script', cursive;
             font-size: 1.8em;
@@ -125,7 +120,6 @@
             line-height: 1.4;
         }
 
-        /* Contador regresivo */
         .countdown-container {
             background: rgba(255, 107, 157, 0.2);
             border: 2px solid rgba(255, 107, 157, 0.5);
@@ -191,7 +185,6 @@
             }
         }
 
-        /* Mensaje final */
         .final-message {
             font-family: 'Dancing Script', cursive;
             font-size: 1.4em;
@@ -214,7 +207,6 @@
             }
         }
 
-        /* Efecto de espada Nichirin en las esquinas */
         .nichirin-decoration {
             position: absolute;
             width: 100px;
@@ -316,19 +308,38 @@
                 font-size: 1.5em;
             }
         }
+
+        /* Indicador de música */
+        .music-status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 107, 157, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 0.9em;
+            z-index: 1000;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Partículas flotantes -->
+    <div class="music-status" id="musicStatus">♪ Música cargando...</div>
+
+    <!-- Audio de ambiente -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="https://www.dropbox.com/scl/fi/ny1t4esehd3we4rky0ma8/V-BTS-Winter-Bear-easy-lyrics.mp3?rlkey=hjbixgthd22002qj15v68mtqp&st=jhfhdn15&dl=1" type="audio/mpeg">
+    </audio>
+
     <div id="particles"></div>
     
-    <!-- Decoraciones de espada -->
     <div class="nichirin-decoration top-left"></div>
     <div class="nichirin-decoration top-right"></div>
     <div class="nichirin-decoration bottom-left"></div>
     <div class="nichirin-decoration bottom-right"></div>
     
-    <!-- Container principal bloqueado -->
     <div class="blocked-container">
         <h1 class="blocked-title">🔒 Sorpresa Bloqueada 🔒</h1>
         
@@ -359,23 +370,78 @@
         </div>
         
         <p class="final-message">
-            🌸 Regresa otro día🌸<br>
+            🌸 Regresa otro día 🌸<br>
         </p>
     </div>
 
     <script>
-        // Fecha objetivo: 8 de septiembre de 2025 a las 00:00 (hora de Perú - UTC-5)
         const targetDate = new Date('2025-09-08T00:00:00-05:00').getTime();
-        
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicStatus = document.getElementById('musicStatus');
+        let musicStarted = false;
+
+        // Función para mostrar estado de música
+        function showMusicStatus(message, duration = 3000) {
+            musicStatus.textContent = message;
+            musicStatus.style.display = 'block';
+            setTimeout(() => {
+                musicStatus.style.display = 'none';
+            }, duration);
+        }
+
+        // Función para iniciar música
+        function startMusic() {
+            if (musicStarted) return;
+            
+            backgroundMusic.volume = 0.1;
+            backgroundMusic.play()
+                .then(() => {
+                    musicStarted = true;
+                    showMusicStatus('♪ Música reproduciendo');
+                    console.log('Música iniciada exitosamente');
+                })
+                .catch((error) => {
+                    console.log('Error reproduciendo música:', error);
+                    showMusicStatus('♪ Clic para activar música');
+                });
+        }
+
+        // Event listeners para música
+        backgroundMusic.addEventListener('loadstart', () => {
+            console.log('Cargando música...');
+            showMusicStatus('♪ Cargando música...');
+        });
+
+        backgroundMusic.addEventListener('canplaythrough', () => {
+            console.log('Música lista para reproducir');
+            setTimeout(startMusic, 500);
+        });
+
+        backgroundMusic.addEventListener('error', (e) => {
+            console.log('Error cargando música:', e);
+            showMusicStatus('♪ Error cargando música', 5000);
+        });
+
+        // Eventos de interacción para iniciar música
+        function setupMusicInteraction() {
+            const startOnInteraction = () => {
+                if (!musicStarted) {
+                    startMusic();
+                }
+            };
+
+            document.addEventListener('click', startOnInteraction);
+            document.addEventListener('touchstart', startOnInteraction);
+            document.addEventListener('keydown', startOnInteraction);
+        }
+
+        // Función de countdown
         function updateCountdown() {
             const now = new Date().getTime();
-            // Ajustar la hora actual a la zona horaria de Perú (UTC-5)
             const peruTime = now - (5 * 60 * 60 * 1000);
             const distance = targetDate - peruTime;
             
-            // Si ya pasó la fecha, redirigir a principal.html
             if (distance < 0) {
-                // Mostrar mensaje de desbloqueó y redirigir
                 document.body.innerHTML = `
                     <div style="
                         position: fixed;
@@ -404,7 +470,6 @@
                     </div>
                 `;
                 
-                // Redirigir a principal.html después de 3 segundos
                 setTimeout(() => {
                     window.location.href = 'principal.html';
                 }, 3000);
@@ -412,20 +477,17 @@
                 return;
             }
             
-            // Calcular tiempo restante
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            // Actualizar display
             document.getElementById('days').textContent = days.toString().padStart(2, '0');
             document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
         
-        // Crear partículas flotantes
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             
@@ -437,7 +499,6 @@
                 particle.style.animationDelay = Math.random() * 10 + 's';
                 particle.style.animationDuration = (Math.random() * 8 + 10) + 's';
                 
-                // Colores variados tipo Demon Slayer
                 const colors = ['#ff6b9d', '#ffeb3b', '#ff9800', '#e91e63', '#9c27b0', '#3f51b5'];
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.boxShadow = `0 0 10px ${colors[Math.floor(Math.random() * colors.length)]}`;
@@ -446,7 +507,6 @@
             }
         }
         
-        // Efecto de respiración en las espadas
         function animateSwords() {
             const swords = document.querySelectorAll('.nichirin-decoration');
             swords.forEach((sword, index) => {
@@ -454,29 +514,25 @@
             });
         }
         
-        // Inicializar todo
-        window.onload = function() {
+        // Inicialización
+        window.addEventListener('load', function() {
             updateCountdown();
             createParticles();
             animateSwords();
+            setupMusicInteraction();
             
-            // Actualizar contador cada segundo
             setInterval(updateCountdown, 1000);
-            
-            // Recrear partículas cada 15 segundos para mantener el efecto
             setInterval(createParticles, 15000);
-        }
+        });
         
-        // Prevenir acceso a la consola o inspección (opcional)
+        // Prevención de trampa
         document.addEventListener('keydown', function(e) {
-            // Bloquear F12, Ctrl+Shift+I, Ctrl+U, etc.
             if (e.key === 'F12' || 
                 (e.ctrlKey && e.shiftKey && e.key === 'I') ||
                 (e.ctrlKey && e.key === 'u') ||
                 (e.ctrlKey && e.shiftKey && e.key === 'J')) {
                 e.preventDefault();
                 
-                // Mostrar mensaje divertido
                 const warning = document.createElement('div');
                 warning.innerHTML = '😏 ¡Hey! No hagas trampa... la sorpresa vale la pena esperar 💖';
                 warning.style.cssText = `
@@ -505,7 +561,6 @@
             }
         });
         
-        // Bloquear clic derecho (opcional)
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             

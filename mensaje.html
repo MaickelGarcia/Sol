@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para la chica más especial 💖</title>
+    <title>21 Razones por las que eres increíble 💖</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap');
         
         * {
             margin: 0;
@@ -14,16 +14,16 @@
         }
 
         body {
-            font-family: 'Cinzel', serif;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
             background-size: 400% 400%;
-            animation: romanticGradient 12s ease infinite;
+            animation: dreamyGradient 15s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        @keyframes romanticGradient {
+        @keyframes dreamyGradient {
             0% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
             50% { background-position: 100% 100%; }
@@ -31,8 +31,8 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Corazones flotantes de fondo */
-        .floating-hearts {
+        /* Partículas flotantes */
+        .floating-elements {
             position: fixed;
             top: 0;
             left: 0;
@@ -42,246 +42,250 @@
             z-index: 1;
         }
 
-        .heart-bg {
+        .floating-item {
             position: absolute;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 30px;
-            animation: heartFloat 15s ease-in-out infinite;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            animation: gentleFloat 12s linear infinite;
         }
 
-        @keyframes heartFloat {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        @keyframes gentleFloat {
+            0% { 
+                transform: translateY(100vh) translateX(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        /* Llamas danzantes */
-        .flame-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .flame {
-            position: absolute;
-            width: 40px;
-            height: 80px;
-            background: radial-gradient(ellipse at bottom, #ff6b9d, #ff8e8e, transparent);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            animation: flameDance 3s ease-in-out infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes flameDance {
-            0%, 100% { 
-                transform: scale(1) rotate(-2deg);
-                filter: hue-rotate(0deg);
-            }
-            33% { 
-                transform: scale(1.3) rotate(2deg);
-                filter: hue-rotate(30deg);
-            }
-            66% { 
-                transform: scale(0.8) rotate(-3deg);
-                filter: hue-rotate(-20deg);
+            100% { 
+                transform: translateY(-100px) translateX(50px) rotate(360deg) scale(1.2);
+                opacity: 0;
             }
         }
 
-        /* Partículas mágicas */
-        .magic-particles {
+        /* Efectos de luz */
+        .light-rays {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(173, 216, 230, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
             pointer-events: none;
-            z-index: 3;
-        }
-
-        .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #fff, #ff6b9d);
-            border-radius: 50%;
-            animation: magicFloat 8s linear infinite;
-        }
-
-        @keyframes magicFloat {
-            0% { 
-                transform: translateY(100vh) translateX(0px) scale(0);
-                opacity: 0;
-            }
-            10% { 
-                opacity: 1;
-                transform: translateY(90vh) translateX(20px) scale(1);
-            }
-            90% { 
-                opacity: 1;
-                transform: translateY(10vh) translateX(-20px) scale(1);
-            }
-            100% { 
-                transform: translateY(-10vh) translateX(0px) scale(0);
-                opacity: 0;
-            }
+            z-index: 2;
         }
 
         /* Container principal */
-        .message-container {
+        .main-container {
             min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            z-index: 10;
             position: relative;
+            z-index: 10;
         }
 
-        /* Título principal super romántico */
-        .main-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5em;
-            color: white;
+        /* Header del mensaje */
+        .header-section {
             text-align: center;
+            margin-bottom: 60px;
+            max-width: 900px;
+        }
+
+        .age-display {
+            font-family: 'Great Vibes', cursive;
+            font-size: 8em;
+            background: linear-gradient(45deg, #ff6b9d, #74b9ff, #a29bfe, #fd79a8);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5em;
+            color: white;
             text-shadow: 
                 3px 3px 6px rgba(0,0,0,0.5),
-                0 0 30px rgba(255, 107, 157, 0.8),
-                0 0 50px rgba(255, 182, 193, 0.5);
-            margin-bottom: 50px;
-            animation: titleGlow 4s ease-in-out infinite alternate;
-            z-index: 15;
+                0 0 40px rgba(255, 107, 157, 0.8);
+            margin-bottom: 30px;
+            animation: titlePulse 3s ease-in-out infinite alternate;
         }
 
-        @keyframes titleGlow {
+        @keyframes titlePulse {
             0% { 
-                transform: scale(1);
                 text-shadow: 
                     3px 3px 6px rgba(0,0,0,0.5),
-                    0 0 30px rgba(255, 107, 157, 0.8),
-                    0 0 50px rgba(255, 182, 193, 0.5);
+                    0 0 40px rgba(255, 107, 157, 0.8);
+                transform: scale(1);
             }
             100% { 
-                transform: scale(1.08);
                 text-shadow: 
                     3px 3px 6px rgba(0,0,0,0.5),
-                    0 0 40px rgba(255, 107, 157, 1),
-                    0 0 70px rgba(255, 182, 193, 0.8),
-                    0 0 100px rgba(255, 255, 255, 0.3);
+                    0 0 60px rgba(255, 107, 157, 1),
+                    0 0 80px rgba(255, 255, 255, 0.3);
+                transform: scale(1.02);
             }
         }
 
-        /* Mensaje romántico principal */
-        .romantic-message {
-            max-width: 800px;
+        .intro-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            line-height: 1.6;
             background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Grid de razones */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .reason-card:hover::before {
+            left: 100%;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.25),
+                0 0 40px rgba(255, 107, 157, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .reason-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #ff6b9d, #74b9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .reason-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .reason-text .highlight {
+            color: #ff6b9d;
+            font-weight: 600;
+            text-shadow: 
+                1px 1px 3px rgba(0,0,0,0.5),
+                0 0 15px rgba(255, 107, 157, 0.8);
+        }
+
+        /* Mensaje final */
+        .final-message {
+            max-width: 800px;
+            text-align: center;
+            margin: 60px 0 40px 0;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
             border-radius: 30px;
             padding: 50px;
-            margin: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
             box-shadow: 
-                0 20px 40px rgba(0,0,0,0.3),
-                0 0 50px rgba(255, 107, 157, 0.2),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-            animation: messageFloat 6s ease-in-out infinite;
+                0 25px 50px rgba(0,0,0,0.2),
+                0 0 60px rgba(255, 107, 157, 0.2);
         }
 
-        @keyframes messageFloat {
-            0%, 100% { 
-                transform: translateY(0px);
-                box-shadow: 
-                    0 20px 40px rgba(0,0,0,0.3),
-                    0 0 50px rgba(255, 107, 157, 0.2),
-                    inset 0 1px 0 rgba(255,255,255,0.2);
-            }
-            50% { 
-                transform: translateY(-10px);
-                box-shadow: 
-                    0 30px 50px rgba(0,0,0,0.4),
-                    0 0 70px rgba(255, 107, 157, 0.4),
-                    inset 0 1px 0 rgba(255,255,255,0.3);
-            }
-        }
-
-        .message-text {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4em;
-            line-height: 2;
+        .final-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
             color: white;
-            text-align: center;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.6;
             margin-bottom: 30px;
         }
 
-        .message-text .highlight {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.3em;
-            color: #ff6b9d;
-            font-weight: 700;
-            text-shadow: 
-                2px 2px 4px rgba(0,0,0,0.5),
-                0 0 15px rgba(255, 107, 157, 0.8);
-            display: inline-block;
-            animation: textGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            0% { 
-                text-shadow: 
-                    2px 2px 4px rgba(0,0,0,0.5),
-                    0 0 15px rgba(255, 107, 157, 0.8);
-            }
-            100% { 
-                text-shadow: 
-                    2px 2px 4px rgba(0,0,0,0.5),
-                    0 0 25px rgba(255, 107, 157, 1),
-                    0 0 35px rgba(255, 182, 193, 0.8);
-            }
-        }
-
-        /* Firma especial */
         .signature {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.2em;
+            font-size: 2.5em;
             color: #ff6b9d;
-            text-align: center;
             text-shadow: 
                 2px 2px 4px rgba(0,0,0,0.5),
-                0 0 20px rgba(255, 107, 157, 0.8);
-            margin-top: 40px;
-            animation: signatureGlow 5s ease-in-out infinite alternate;
+                0 0 25px rgba(255, 107, 157, 1);
+            animation: signatureGlow 4s ease-in-out infinite alternate;
         }
 
         @keyframes signatureGlow {
             0% { 
+                filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.6));
                 transform: scale(1);
-                filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
             }
             100% { 
-                transform: scale(1.1);
-                filter: drop-shadow(0 0 20px rgba(255, 107, 157, 1));
+                filter: drop-shadow(0 0 25px rgba(255, 107, 157, 1));
+                transform: scale(1.05);
             }
         }
 
-        /* Botón de regreso elegante */
+        /* Botón de regreso */
         .back-button {
             position: fixed;
             top: 30px;
             left: 30px;
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 107, 157, 0.3));
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 15px 25px;
             border-radius: 25px;
             font-family: 'Cinzel', serif;
-            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -289,88 +293,69 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            z-index: 20;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .back-button:hover {
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 107, 157, 0.5));
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
-        /* Decoraciones especiales */
-        .demon-slayer-pattern {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, transparent, rgba(255, 107, 157, 0.1));
-            clip-path: polygon(100% 0, 100% 70%, 30% 100%, 0 30%);
-            z-index: 4;
-        }
-
-        .demon-slayer-pattern-bottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 300px;
-            height: 150px;
-            background: linear-gradient(135deg, transparent, rgba(116, 185, 255, 0.1));
-            clip-path: polygon(0 100%, 70% 100%, 100% 30%, 30% 0);
-            z-index: 4;
-        }
-
-        /* Respiración visual */
-        .breathing-aura {
-            position: fixed;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 10px;
-            background: linear-gradient(90deg, #ff7675, #74b9ff, #a29bfe, #fd79a8, #ff6b9d);
-            border-radius: 5px;
-            animation: breathingPower 5s ease-in-out infinite;
-            z-index: 5;
-            opacity: 0.7;
-        }
-
-        @keyframes breathingPower {
-            0%, 100% { 
-                opacity: 0.3;
-                box-shadow: 0 0 10px rgba(255,255,255,0.2);
-                transform: translateX(-50%) scaleX(1);
-            }
-            50% { 
-                opacity: 1;
-                box-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 50px rgba(116, 185, 255, 0.5);
-                transform: translateX(-50%) scaleX(1.1);
-            }
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .age-display {
+                font-size: 5em;
+            }
+            
             .main-title {
-                font-size: 3em;
-                margin-bottom: 30px;
+                font-size: 2.5em;
             }
             
-            .romantic-message {
-                padding: 30px;
-                margin: 20px;
+            .intro-message {
+                font-size: 1.5em;
+                padding: 25px;
             }
             
-            .message-text {
-                font-size: 1.2em;
-                line-height: 1.8;
+            .reasons-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .reason-card {
+                padding: 25px;
+            }
+            
+            .reason-number {
+                font-size: 2.8em;
+            }
+            
+            .final-text {
+                font-size: 1.6em;
             }
             
             .signature {
-                font-size: 1.8em;
-                margin-top: 30px;
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 20px 15px;
+            }
+            
+            .age-display {
+                font-size: 4em;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .intro-message {
+                font-size: 1.3em;
+                padding: 20px;
             }
             
             .back-button {
@@ -384,14 +369,8 @@
 </head>
 <body>
     <!-- Efectos de fondo -->
-    <div class="floating-hearts" id="heartsBg"></div>
-    <div class="flame-container" id="flames"></div>
-    <div class="magic-particles" id="particles"></div>
-    
-    <!-- Decoraciones -->
-    <div class="demon-slayer-pattern"></div>
-    <div class="demon-slayer-pattern-bottom"></div>
-    <div class="breathing-aura"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+    <div class="light-rays"></div>
     
     <!-- Botón de regreso -->
     <a href="javascript:history.back()" class="back-button">
@@ -399,197 +378,264 @@
     </a>
     
     <!-- Contenido principal -->
-    <div class="message-container">
-        <h1 class="main-title">Para la chica más hermosa del mundo 💖</h1>
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header-section">
+            <div class="age-display">21</div>
+            <h1 class="main-title">Razones por las que eres increíble</h1>
+            <div class="intro-message">
+                Hoy cumples 21 años y quiero celebrar no solo tu cumpleaños, 
+                sino también la persona maravillosa que eres. Aquí tienes 21 razones 
+                que describen por qué iluminas mi mundo cada día ✨
+            </div>
+        </div>
         
-        <div class="romantic-message">
-            <div class="message-text">
-                Como <span class="highlight">Tanjiro</span> protege con su vida lo que más ama, 
-                yo quiero proteger tu sonrisa cada amanecer. 🌅
+        <!-- Grid de razones -->
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <div class="reason-number">1</div>
+                <div class="reason-text">Tu <span class="highlight">sonrisa</span> puede cambiar completamente mi día más difícil</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">2</div>
+                <div class="reason-text">Tienes la <span class="highlight">fortaleza</span> de Tanjiro para enfrentar cualquier desafío</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">3</div>
+                <div class="reason-text">Tu <span class="highlight">bondad</span> hacia otros siempre me inspira a ser mejor persona</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">4</div>
+                <div class="reason-text">Eres <span class="highlight">inteligente</span> de una manera que me fascina y admiro profundamente</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">5</div>
+                <div class="reason-text">Tu <span class="highlight">risa</span> es la melodía más hermosa que existe en mi mundo</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">6</div>
+                <div class="reason-text">Tienes un <span class="highlight">corazón puro</span> que ve lo bueno en todo y en todos</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">7</div>
+                <div class="reason-text">Tu <span class="highlight">determinación</span> me enseña que todo es posible con esfuerzo</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">8</div>
+                <div class="reason-text">Eres <span class="highlight">valiente</span> enfrentando tus miedos como una verdadera guerrera</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">9</div>
+                <div class="reason-text">Tu <span class="highlight">creatividad</span> convierte lo ordinario en algo extraordinario</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">10</div>
+                <div class="reason-text">Tienes la <span class="highlight">paciencia</span> para escuchar y comprender a quienes te rodean</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">11</div>
+                <div class="reason-text">Tu <span class="highlight">lealtad</span> es inquebrantable como el vínculo entre Tanjiro y Nezuko</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">12</div>
+                <div class="reason-text">Eres <span class="highlight">auténtica</span> en un mundo que a veces olvida ser genuino</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">13</div>
+                <div class="reason-text">Tu <span class="highlight">generosidad</span> no conoce límites cuando se trata de ayudar a otros</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">14</div>
+                <div class="reason-text">Tienes una <span class="highlight">intuición</span> increíble que siempre te guía por el camino correcto</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">15</div>
+                <div class="reason-text">Tu <span class="highlight">sentido del humor</span> hace que hasta los momentos más simples sean especiales</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">16</div>
+                <div class="reason-text">Eres <span class="highlight">resiliente</span> como una flor que crece hermosa después de la tormenta</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">17</div>
+                <div class="reason-text">Tu <span class="highlight">compasión</span> sana corazones rotos sin que te des cuenta</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">18</div>
+                <div class="reason-text">Tienes la <span class="highlight">sabiduría</span> para encontrar luz en los momentos más oscuros</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">19</div>
+                <div class="reason-text">Tu <span class="highlight">presencia</span> convierte cualquier lugar en un hogar lleno de amor</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">20</div>
+                <div class="reason-text">Eres <span class="highlight">única e irreemplazable</span>, no existe nadie igual a ti en todo el universo</div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">21</div>
+                <div class="reason-text">Tu <span class="highlight">amor</span> ha transformado mi vida de maneras que jamás imaginé posibles</div>
+            </div>
+        </div>
+        
+        <!-- Mensaje final -->
+        <div class="final-message">
+            <div class="final-text">
+                Estos 21 años han moldeado a la persona extraordinaria que eres hoy. 
+                Que este nuevo año de vida esté lleno de aventuras, sueños cumplidos 
+                y toda la felicidad que mereces. 
                 <br><br>
-                
-                Tu presencia ilumina mis días como el <span class="highlight">Sol</span> 
-                que da fuerza a los Cazadores de Demonios. ☀️
-                <br><br>
-                
-                Eres mi <span class="highlight">respiración del amor total</span>, 
-                la técnica más poderosa que existe en mi corazón. 💫
-                <br><br>
-                
-                Que este nuevo año de vida esté lleno de aventuras tan épicas 
-                como las que vivimos juntos, y que cada día sea una 
-                <span class="highlight">victoria sobre la tristeza</span>. ⚔️
-                <br><br>
-                
-                <span class="highlight">Eres mi luz en la oscuridad</span>, 
-                mi razón para ser fuerte, mi <span class="highlight">felicidad eterna</span>. 
-                <br><br>
-                
-                🌸 <em>¡Feliz cumpleaños, mi amor verdadero!</em> 🌸
+                🌸 <em>¡Feliz cumpleaños número 21!</em> 🌸
             </div>
             
             <div class="signature">
-                Con todo mi corazón,<br>
-                Tu Cazador de Demonios favorito 💕
+                Lo que te preocupa... nunca sucederá. Lo prometo.
+                <br>- Kang Tae-Moo
             </div>
         </div>
     </div>
 
     <script>
-        // Crear corazones de fondo
-        function createBackgroundHearts() {
-            const container = document.getElementById('heartsBg');
-            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '🌸'];
+        // Crear elementos flotantes
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            const elements = ['💖', '💕', '💗', '💝', '💘', '💞', '🌸', '✨', '⭐', '🎂', '🎉', '🎈', '💐', '🦋'];
             
             setInterval(() => {
-                if (container.children.length < 8) {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart-bg';
-                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                    heart.style.animationDelay = Math.random() * 5 + 's';
-                    heart.style.fontSize = (Math.random() * 20 + 25) + 'px';
+                if (container.children.length < 12) {
+                    const element = document.createElement('div');
+                    element.className = 'floating-item';
+                    element.textContent = elements[Math.floor(Math.random() * elements.length)];
+                    element.style.left = Math.random() * 100 + '%';
+                    element.style.animationDuration = (Math.random() * 8 + 10) + 's';
+                    element.style.animationDelay = Math.random() * 3 + 's';
+                    element.style.fontSize = (Math.random() * 15 + 20) + 'px';
                     
-                    container.appendChild(heart);
+                    container.appendChild(element);
                     
                     setTimeout(() => {
-                        if (heart.parentNode) {
-                            heart.parentNode.removeChild(heart);
+                        if (element.parentNode) {
+                            element.parentNode.removeChild(element);
                         }
-                    }, 20000);
+                    }, 18000);
                 }
-            }, 2000);
+            }, 1500);
         }
 
-        // Crear llamas danzantes
-        function createFlames() {
-            const container = document.getElementById('flames');
+        // Efecto de entrada para las tarjetas
+        function animateCards() {
+            const cards = document.querySelectorAll('.reason-card');
             
-            for (let i = 0; i < 15; i++) {
-                const flame = document.createElement('div');
-                flame.className = 'flame';
-                flame.style.left = (i * 8) + '%';
-                flame.style.animationDelay = (i * 0.3) + 's';
-                flame.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                
-                // Colores aleatorios de llama
-                const colors = [
-                    'radial-gradient(ellipse at bottom, #ff6b9d, #ff8e8e, transparent)',
-                    'radial-gradient(ellipse at bottom, #74b9ff, #a29bfe, transparent)',
-                    'radial-gradient(ellipse at bottom, #fd79a8, #fdcb6e, transparent)'
-                ];
-                flame.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                container.appendChild(flame);
-            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 150);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px) scale(0.9)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
         }
 
-        // Crear partículas mágicas
-        function createMagicParticles() {
-            const container = document.getElementById('particles');
+        // Efecto especial para el número 21
+        function animate21() {
+            const ageDisplay = document.querySelector('.age-display');
             
             setInterval(() => {
-                if (container.children.length < 20) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDuration = (Math.random() * 5 + 6) + 's';
-                    particle.style.animationDelay = Math.random() * 2 + 's';
-                    
-                    const sizes = ['6px', '8px', '10px'];
-                    const size = sizes[Math.floor(Math.random() * sizes.length)];
-                    particle.style.width = size;
-                    particle.style.height = size;
-                    
-                    container.appendChild(particle);
-                    
-                    setTimeout(() => {
-                        if (particle.parentNode) {
-                            particle.parentNode.removeChild(particle);
-                        }
-                    }, 12000);
-                }
-            }, 800);
-        }
-
-        // Efecto de entrada espectacular
-        function createEntranceEffect() {
-            const hearts = ['💖', '💕', '💗', '💝', '💘', '💞', '💓', '🌸', '✨', '⭐'];
-            
-            for (let i = 0; i < 30; i++) {
+                ageDisplay.style.transform = 'scale(1.1) rotate(5deg)';
                 setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                    heart.style.position = 'fixed';
-                    heart.style.left = '50%';
-                    heart.style.top = '50%';
-                    heart.style.fontSize = Math.random() * 30 + 25 + 'px';
-                    heart.style.pointerEvents = 'none';
-                    heart.style.zIndex = '1000';
-                    heart.style.textShadow = '0 0 20px rgba(255, 107, 157, 1)';
+                    ageDisplay.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+            }, 4000);
+        }
+
+        // Efecto de confeti al cargar
+        function createConfetti() {
+            const colors = ['#ff6b9d', '#74b9ff', '#a29bfe', '#fd79a8', '#fdcb6e', '#6c5ce7'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.zIndex = '1000';
+                    confetti.style.borderRadius = '50%';
                     
-                    const angle = (i / 30) * 2 * Math.PI;
-                    const distance = Math.random() * 300 + 200;
-                    const x = Math.cos(angle) * distance;
-                    const y = Math.sin(angle) * distance;
+                    document.body.appendChild(confetti);
                     
-                    heart.animate([
+                    confetti.animate([
                         { 
-                            transform: 'translate(-50%, -50%) scale(0) rotate(0deg)',
-                            opacity: 0
-                        },
-                        { 
-                            transform: 'translate(-50%, -50%) scale(1.5) rotate(180deg)',
+                            transform: 'translateY(-10px) rotate(0deg)',
                             opacity: 1
                         },
                         { 
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1) rotate(360deg)`,
-                            opacity: 0.8
-                        },
-                        { 
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y + 200}px)) scale(0) rotate(540deg)`,
+                            transform: `translateY(${window.innerHeight + 50}px) rotate(720deg)`,
                             opacity: 0
                         }
                     ], {
-                        duration: 4000,
+                        duration: Math.random() * 3000 + 2000,
                         easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
                     });
                     
-                    document.body.appendChild(heart);
-                    
                     setTimeout(() => {
-                        if (heart.parentNode) {
-                            heart.parentNode.removeChild(heart);
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
                         }
-                    }, 4000);
-                }, i * 150);
+                    }, 5000);
+                }, i * 100);
             }
-        }
-
-        // Función de compatibilidad
-        function saludar() {
-            alert("💖 ¡Espero que este mensaje haya tocado tu corazón! 💖\n\n🌸 Con todo mi amor 🌸");
         }
 
         // Inicializar todo
         window.onload = function() {
-            createBackgroundHearts();
-            createFlames();
-            createMagicParticles();
+            createFloatingElements();
+            animateCards();
+            animate21();
             
-            // Efecto de entrada después de un momento
-            setTimeout(() => {
-                createEntranceEffect();
-            }, 500);
+            // Confeti de bienvenida
+            setTimeout(createConfetti, 1000);
         }
 
-        // Efecto al hacer scroll
+        // Smooth scroll para una mejor experiencia
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
+            const rate = scrolled * -0.3;
             
-            document.querySelector('.breathing-aura').style.transform = `translateX(-50%) translateY(${rate}px)`;
+            const lightRays = document.querySelector('.light-rays');
+            lightRays.style.transform = `translateY(${rate}px)`;
         });
     </script>
 </body>

@@ -45,7 +45,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Imagen en esquina superior derecha */
         .character-image {
             position: fixed;
             top: 20px;
@@ -75,7 +74,6 @@
         }
 
         .character-image::before {
-            content: 'Imagen de personaje';
             position: absolute;
             width: 100%;
             height: 100%;
@@ -110,7 +108,6 @@
             }
         }
 
-        /* Efectos temáticos de Kimetsu */
         .demon-slayer-bg {
             position: fixed;
             top: 0;
@@ -148,7 +145,6 @@
             100% { transform: translateX(100vw) scaleX(0); }
         }
 
-        /* Patrón tipo haori */
         .haori-pattern {
             position: fixed;
             top: 0;
@@ -173,7 +169,6 @@
             100% { background-position: 40px 40px; }
         }
 
-        /* Efectos de respiración mejorados */
         .breathing-effects {
             position: fixed;
             top: 0;
@@ -711,7 +706,7 @@
     <!-- Imagen de personaje en esquina superior derecha -->
     <div class="character-image">
         <!-- Aquí puedes colocar tu imagen PNG -->
-        <!-- <img src="tu-imagen.png" alt="Personaje Kimetsu"> -->
+        <img src="https://static.wikia.nocookie.net/kimetsu-no-yaiba-fan/images/4/43/Muzan_encountering_Tanjiro.png/revision/latest?cb=20210701162755" alt="Personaje Kimetsu"> 
     </div>
 
     <!-- Efectos de respiración -->
@@ -874,9 +869,6 @@
             <div class="results" id="results">
                 <div class="score-display" id="scoreDisplay">8/10</div>
                 <div class="result-message" id="resultMessage"></div>
-                <button class="final-btn" id="finalBtn" onclick="handleFinalAction()">
-                    Abrir la carta especial 💖
-                </button>
             </div>
         </div>
     </div>
@@ -942,31 +934,43 @@
         }
 
         function nextQuestion() {
-            const currentQ = document.querySelector('.question.active');
-            currentQ.classList.remove('active');
+            console.log("Pregunta actual:", currentQuestion);
             
-            currentQuestion++;
-            updateProgress();
-            
-            if (currentQuestion <= 10) {
-                const nextQ = document.querySelector(`[data-question="${currentQuestion}"]`);
+            if (currentQuestion < 10) {
+                const currentQ = document.querySelector('.question.active');
+                currentQ.classList.remove('active');
+                
+                currentQuestion++;
+                updateProgress();
+                
                 setTimeout(() => {
+                    const nextQ = document.querySelector(`[data-question="${currentQuestion}"]`);
                     nextQ.classList.add('active');
                     answered = false;
                 }, 300);
             } else {
-                showResults();
+                console.log("Mostrando resultados...");
+                setTimeout(() => {
+                    showResults();
+                }, 300);
             }
         }
 
         function updateProgress() {
-            const progress = ((currentQuestion - 1) / 10) * 100;
+            const progress = (currentQuestion / 10) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
             document.getElementById('questionCounter').textContent = `Pregunta ${currentQuestion} de 10`;
         }
 
         function showResults() {
-            document.querySelector('.quiz-box').style.display = 'none';
+            console.log("Función showResults ejecutada. Score:", score);
+            
+            const allQuestions = document.querySelectorAll('.question');
+            allQuestions.forEach(q => q.style.display = 'none');
+            
+            document.querySelector('.progress-bar').style.display = 'none';
+            document.querySelector('.question-counter').style.display = 'none';
+            
             const results = document.getElementById('results');
             const scoreDisplay = document.getElementById('scoreDisplay');
             const resultMessage = document.getElementById('resultMessage');
@@ -981,14 +985,20 @@
                             ¡Eres la verdadera Sol! ☀️
                         </h3>
                         <p style="font-size: 1.2em;">
-                            Has demostrado ser una verdadera conocedora de Kimetsu no Yaiba. 
-                            <br>¡Definitivamente eres mi Sol! 💖
-                            <br><br><em>Ahora puedes abrir tu carta especial...</em> 🌸
+                            Has demostrado ser una verdadera conocedora de Kimetsu no Yaiba, BTS y Kdramas.
+                            <br>¡Definitivamente eres Sol! 💖
+                            <br><br><em>Ahora puedes ver tu carta especial...</em> 🌸
                         </p>
                     </div>
+                    <div
+                    <button class="final-btn" onclick="continueToMessage()" 
+                            style="background: linear-gradient(45deg, #2ecc71, #27ae60); font-size: 1.5em; padding: 25px 50px;">
+                        Continuar al mensaje especial 💖
+                    </button>
+                    </div>
                 `;
-                finalBtn.textContent = "Abrir mi carta de amor 💖";
-                finalBtn.style.background = "linear-gradient(45deg, #2ecc71, #27ae60)";
+                
+                createVictoryEffect();
             } else {
                 resultMessage.innerHTML = `
                     <div class="fail-message">
@@ -1007,24 +1017,21 @@
             }
             
             results.classList.add('show');
-            
-            // Efecto de confeti si pasó
-            if (score >= 8) {
-                createVictoryEffect();
-            }
+            console.log("Resultados mostrados");
         }
 
         function handleFinalAction() {
             if (score >= 8) {
-                // Efecto final y redireccionar a mensaje.html
                 createHeartExplosion();
-                setTimeout(() => {
-                    window.location.href = 'mensaje.html';
-                }, 1000);
+                showSuccessMessage();
             } else {
-                // Reiniciar quiz
                 location.reload();
             }
+        }  
+
+        function continueToMessage() {
+            // Redirect to mensaje.html
+            window.location.href = 'mensaje.html';
         }
 
         function createVictoryEffect() {
@@ -1118,11 +1125,6 @@
                     }, 3000);
                 }, i * 100);
             }
-        }
-
-        // Función de compatibilidad
-        function saludar() {
-            alert("💖 ¡Completa el quiz para continuar! 💖");
         }
 
         // Inicializar
