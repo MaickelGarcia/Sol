@@ -438,8 +438,8 @@
         // Función de countdown
         function updateCountdown() {
             const now = new Date().getTime();
-            const peruTime = now - (5 * 60 * 60 * 1000);
-            const distance = targetDate - peruTime;
+            const distance = targetDate - now;
+
             
             if (distance < 0) {
                 document.body.innerHTML = `
@@ -465,13 +465,13 @@
                             Llevándote a tu regalo especial...
                         </div>
                         <div style="margin-top: 15px; font-size: 0.6em; color: #ffffff;">
-                            ✨ Cargando principal.html ✨
+                            ✨ Cargando inicio.html ✨
                         </div>
                     </div>
                 `;
                 
                 setTimeout(() => {
-                    window.location.href = 'principal.html';
+                    window.location.href = 'inicio.html';
                 }, 3000);
                 
                 return;

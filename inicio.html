@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Mensaje Especial ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cinzel:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(-45deg, #ff6b9d, #c06c84, #6c5b7b, #355c7d);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: floatHeart 15s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                transform: translateY(-20vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Pantalla inicial de música */
+        .music-start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .music-container {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 107, 157, 0.6);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .music-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6b9d;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            animation: title-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes title-glow {
+            0% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            }
+            100% { 
+                text-shadow: 
+                    3px 3px 6px rgba(0, 0, 0, 0.8),
+                    0 0 30px rgba(255, 107, 157, 0.9);
+            }
+        }
+
+        .music-description {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.4;
+        }
+
+        .music-btn, .skip-music-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
+
+        .music-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ff9a9e);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .music-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .skip-music-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-size: 1em;
+        }
+
+        .skip-music-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Container principal - inicialmente oculto */
+        .message-container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            position: relative;
+            max-width: 800px;
+            width: 90%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            min-height: 400px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .message-text {
+            font-size: 2.2em;
+            line-height: 1.6;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+            text-align: center;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animación de escritura */
+        .typing-cursor {
+            opacity: 1;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .fade-out {
+            animation: fadeOutText 0.8s ease-in forwards;
+        }
+
+        @keyframes fadeOutText {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.9);
+            }
+        }
+
+        .button-container {
+            display: none;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInButtons 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInButtons {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .choice-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-si {
+            background: linear-gradient(135deg, #ff6b9d, #ff9a9e);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-si:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-no:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .no-choice-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6em;
+            color: #ffb3d9;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInMessage 1s ease-out forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes fadeInMessage {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 15;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #ff9a9e);
+            width: 0%;
+            transition: width 0.8s ease;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .music-container {
+                padding: 40px 30px;
+            }
+            
+            .music-title {
+                font-size: 2em;
+            }
+            
+            .music-description {
+                font-size: 1.1em;
+            }
+            
+            .music-btn, .skip-music-btn {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+            
+            .message-text {
+                font-size: 1.8em;
+                min-height: 120px;
+            }
+            
+            .choice-btn {
+                font-size: 1.2em;
+                padding: 12px 30px;
+            }
+            
+            .button-container {
+                gap: 20px;
+            }
+            
+            .progress-bar {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .music-container {
+                padding: 30px 20px;
+            }
+            
+            .music-title {
+                font-size: 1.8em;
+            }
+            
+            .music-description {
+                font-size: 1em;
+            }
+            
+            .music-btn, .skip-music-btn {
+                font-size: 0.9em;
+                padding: 10px 20px;
+                margin: 5px;
+            }
+            
+            .message-container {
+                padding: 30px 20px;
+            }
+            
+            .message-text {
+                font-size: 1.5em;
+                min-height: 100px;
+            }
+            
+            .choice-btn {
+                font-size: 1em;
+                padding: 10px 25px;
+            }
+            
+            .no-choice-message {
+                font-size: 1.3em;
+            }
+            
+            .progress-bar {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio de ambiente -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="https://www.dropbox.com/scl/fi/ny1t4esehd3we4rky0ma8/V-BTS-Winter-Bear-easy-lyrics.mp3?rlkey=hjbixgthd22002qj15v68mtqp&st=jhfhdn15&dl=1" type="audio/mpeg">
+    </audio>
+
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <!-- Pantalla inicial para reproducir música -->
+    <div class="music-start-screen" id="musicStartScreen">
+        <div class="music-container">
+            <h2 class="music-title">🎵 Experiencia Musical 🎵</h2>
+            <p class="music-description">Para una experiencia completa, activa la música de fondo</p>
+            <button class="music-btn" id="startMusicBtn">▶ Reproducir Música e Iniciar</button>
+            <button class="skip-music-btn" id="skipMusicBtn">Continuar sin música</button>
+        </div>
+    </div>
+    
+    <div class="message-container" id="mainContainer">
+        <div class="message-text" id="messageText"></div>
+        
+        <div class="button-container" id="buttonContainer">
+            <button class="choice-btn btn-si" id="btnSi">Sí, lo prometo</button>
+            <button class="choice-btn btn-no" id="btnNo">No</button>
+        </div>
+        
+        <div class="no-choice-message" id="noChoiceMessage" style="display: none;">
+            😏 No tienes más opción que prometerlo... 💖
+        </div>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <script>
+        console.log('Página iniciada');
+        
+        const messages = [
+            "Hola Samantha",
+            "Veo que vienes a abrir tu regalo🎁",
+            "Antes que nada quiero contarte algo",
+            "Hay algo que siempre me quedó dando vueltas",
+            "la verdad es algo que siempre me molestó",
+            "La vez que nos conocimos",
+            "Nos vimos varias veces y nunca lo logré...",
+            "Siempre intenté sacarte una sonrisa😊",
+            "Intenté y me molesté conmigo porque nunca pude",
+            "Pasaron dos años...",
+            "Pasaron cosas",
+            "Y nunca vi esa sonrisa",
+            "Hace poco salimos",
+            "Y por fin pude verte sonreír , varias veces además",
+            "Quiero que sepas que es la sonrisa más linda que he visto sinceramente",
+            "Prométeme algo",
+            "Harás lo posible para que esa sonrisa nunca se borre",
+            "Y si alguien intenta borrarla otra vez, dímelo 💌",
+            "Le haré la vida imposible a quien se atreva 😠",
+            "Bueno, ¿qué dices? ¿Lo prometes?"
+        ];
+
+        // Variables
+        let currentMessageIndex = 0;
+        let musicStarted = false;
+        let animationStarted = false;
+
+        // Elementos DOM
+        const messageText = document.getElementById('messageText');
+        const buttonContainer = document.getElementById('buttonContainer');
+        const progressFill = document.getElementById('progressFill');
+        const btnSi = document.getElementById('btnSi');
+        const btnNo = document.getElementById('btnNo');
+        const noChoiceMessage = document.getElementById('noChoiceMessage');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicStartScreen = document.getElementById('musicStartScreen');
+        const mainContainer = document.getElementById('mainContainer');
+        const startMusicBtn = document.getElementById('startMusicBtn');
+        const skipMusicBtn = document.getElementById('skipMusicBtn');
+
+        console.log('Variables y elementos definidos');
+
+        // Función para escribir texto letra por letra
+        function typeWriterEffect(element, text, speed = 80, callback) {
+            console.log('Iniciando typewriter para:', text);
+            element.innerHTML = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    // Agregar cursor parpadeante al final
+                    element.innerHTML += '<span class="typing-cursor">|</span>';
+                    setTimeout(() => {
+                        // Remover cursor después de un tiempo
+                        const cursor = element.querySelector('.typing-cursor');
+                        if (cursor) cursor.remove();
+                        if (callback) callback();
+                    }, 1000);
+                }
+            }
+            typeWriter();
+        }
+
+        // Iniciar música
+        function startMusic() {
+            console.log('Intentando iniciar música');
+            if (musicStarted) return;
+            
+            backgroundMusic.volume = 0.3;
+            backgroundMusic.play()
+                .then(() => {
+                    musicStarted = true;
+                    console.log('Música iniciada exitosamente');
+                })
+                .catch((error) => {
+                    console.log('Error reproduciendo música:', error);
+                });
+        }
+
+        // Crear corazones flotantes
+        function createFloatingHearts() {
+            console.log('Creando corazones flotantes');
+            const heartsContainer = document.getElementById('heartsContainer');
+            
+            // Limpiar corazones existentes
+            heartsContainer.innerHTML = '';
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Iniciar la experiencia
+        function startExperience() {
+            console.log('Iniciando experiencia');
+            animationStarted = true;
+            
+            // Ocultar pantalla de música
+            musicStartScreen.style.animation = 'fadeOutText 1s ease-in forwards';
+            
+            setTimeout(() => {
+                musicStartScreen.style.display = 'none';
+                mainContainer.style.display = 'flex';
+                createFloatingHearts();
+                
+                setTimeout(() => {
+                    showMessage(0);
+                }, 500);
+            }, 1000);
+        }
+
+        // Mostrar mensaje con animación de escritura
+        function showMessage(index) {
+            console.log('Mostrando mensaje', index + 1, 'de', messages.length);
+            
+            if (index >= messages.length) {
+                showButtons();
+                return;
+            }
+
+            // Resetear el contenedor del mensaje
+            messageText.style.opacity = '1';
+            messageText.style.transform = 'translateY(0) scale(1)';
+
+            // Actualizar barra de progreso
+            const progress = ((index + 1) / messages.length) * 100;
+            progressFill.style.width = progress + '%';
+
+            // Usar efecto de escritura
+            typeWriterEffect(messageText, messages[index], 60, () => {
+                // Esperar antes del siguiente mensaje
+                setTimeout(() => {
+                    if (index < messages.length - 1) {
+                        // Fade out
+                        messageText.style.animation = 'fadeOutText 0.8s ease-in forwards';
+                        setTimeout(() => {
+                            messageText.style.animation = 'none';
+                            showMessage(index + 1);
+                        }, 800);
+                    } else {
+                        // Último mensaje, mostrar botones
+                        setTimeout(showButtons, 2000);
+                    }
+                }, 3000);
+            });
+        }
+        function fadeOutMusic(duration = 2000) {
+    if (!musicStarted || !backgroundMusic) return;
+    
+    const startVolume = backgroundMusic.volume;
+    const fadeStep = startVolume / (duration / 50); // 50ms intervals
+    
+    const fadeInterval = setInterval(() => {
+        if (backgroundMusic.volume > 0) {
+            backgroundMusic.volume = Math.max(0, backgroundMusic.volume - fadeStep);
+        } else {
+            clearInterval(fadeInterval);
+            backgroundMusic.pause();
+        }
+    }, 50);
+}
+
+        function showButtons() {
+            console.log('Mostrando botones');
+            progressFill.style.width = '100%';
+            buttonContainer.style.display = 'flex';
+        }
+
+        startMusicBtn.addEventListener('click', function() {
+            console.log('Botón música clickeado');
+            startMusic();
+            startExperience();
+        });
+
+        skipMusicBtn.addEventListener('click', function() {
+            console.log('Botón skip clickeado');
+            startExperience();
+        });
+
+        btnSi.addEventListener('click', function() {
+        console.log('Botón Sí clickeado');
+        
+
+        fadeOutMusic(2500); 
+        
+
+        document.body.style.transition = 'all 1s ease';
+        document.body.style.background = '#4CAF50';
+        
+        messageText.style.animation = 'fadeOutText 0.8s ease-in forwards';
+        buttonContainer.style.animation = 'fadeOutText 0.8s ease-in forwards';
+        
+        setTimeout(() => {
+            messageText.innerHTML = '🎉 ¡Perfecto! Sabía que podía contar contigo 🎉<br><div style="margin-top: 20px; font-size: 0.8em;">Llevándote a tu regalo especial...</div>';
+            messageText.style.animation = 'fadeInText 1s ease-out forwards';
+            messageText.style.color = '#fff';
+            
+            setTimeout(() => {
+
+                window.location.href = 'principal.html';
+            }, 3000);
+        }, 800);
+    });
+
+        btnNo.addEventListener('click', function() {
+            console.log('Botón No clickeado');
+            // Hacer desaparecer el botón "No"
+            btnNo.style.animation = 'fadeOutText 0.5s ease-in forwards';
+            
+            setTimeout(() => {
+                btnNo.style.display = 'none';
+                noChoiceMessage.style.display = 'block';
+                
+                // Después de 3 segundos, mostrar solo el botón "Sí"
+                setTimeout(() => {
+                    noChoiceMessage.style.animation = 'fadeOutText 0.5s ease-in forwards';
+                    setTimeout(() => {
+                        noChoiceMessage.style.display = 'none';
+                        btnSi.innerHTML = 'Está bien... lo prometo 😊';
+                        btnSi.style.transform = 'scale(1.1)';
+                    }, 500);
+                }, 3000);
+            }, 500);
+        });
+
+        // Prevenir herramientas de desarrollador
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'J')) {
+                e.preventDefault();
+                
+                const warning = document.createElement('div');
+                warning.innerHTML = '💖 Vive el momento sin distracciones...';
+                warning.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 107, 157, 0.9);
+                    color: white;
+                    padding: 20px 40px;
+                    border-radius: 25px;
+                    font-family: 'Dancing Script', cursive;
+                    font-size: 1.3em;
+                    z-index: 10000;
+                    border: 2px solid white;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                    text-align: center;
+                `;
+                
+                document.body.appendChild(warning);
+                
+                setTimeout(() => {
+                    if (warning.parentNode) {
+                        warning.parentNode.removeChild(warning);
+                    }
+                }, 2500);
+            }
+        });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Inicialización
+        window.addEventListener('load', function() {
+            console.log('Página cargada completamente');
+            console.log('Pantalla de música visible:', musicStartScreen.style.display !== 'none');
+        });
+
+        // Recrear corazones periódicamente
+        setInterval(() => {
+            if (animationStarted) {
+                createFloatingHearts();
+            }
+        }, 20000);
+    </script>
+</body>
+</html>

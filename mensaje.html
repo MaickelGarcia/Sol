@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Playfair Display', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background: linear-gradient(135deg, #6a4c93 0%, #8b5cf6 25%, #a855f7 50%, #c084fc 75%, #e879f9 100%);
             background-size: 400% 400%;
             animation: dreamyGradient 15s ease infinite;
             min-height: 100vh;
@@ -70,9 +70,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse at 20% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(173, 216, 230, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+                radial-gradient(ellipse at 20% 20%, rgba(192, 132, 252, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
             pointer-events: none;
             z-index: 2;
         }
@@ -98,13 +98,13 @@
         .age-display {
             font-family: 'Great Vibes', cursive;
             font-size: 8em;
-            background: linear-gradient(45deg, #ff6b9d, #74b9ff, #a29bfe, #fd79a8);
+            background: linear-gradient(45deg, #c084fc, #a855f7, #8b5cf6, #e879f9);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 4s ease-in-out infinite alternate;
-            text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+            text-shadow: 0 0 30px rgba(192, 132, 252, 0.6);
             margin-bottom: 20px;
         }
 
@@ -119,7 +119,7 @@
             color: white;
             text-shadow: 
                 3px 3px 6px rgba(0,0,0,0.5),
-                0 0 40px rgba(255, 107, 157, 0.8);
+                0 0 40px rgba(192, 132, 252, 0.8);
             margin-bottom: 30px;
             animation: titlePulse 3s ease-in-out infinite alternate;
         }
@@ -128,13 +128,13 @@
             0% { 
                 text-shadow: 
                     3px 3px 6px rgba(0,0,0,0.5),
-                    0 0 40px rgba(255, 107, 157, 0.8);
+                    0 0 40px rgba(192, 132, 252, 0.8);
                 transform: scale(1);
             }
             100% { 
                 text-shadow: 
                     3px 3px 6px rgba(0,0,0,0.5),
-                    0 0 60px rgba(255, 107, 157, 1),
+                    0 0 60px rgba(192, 132, 252, 1),
                     0 0 80px rgba(255, 255, 255, 0.3);
                 transform: scale(1.02);
             }
@@ -197,19 +197,51 @@
             transform: translateY(-8px) scale(1.02);
             box-shadow: 
                 0 30px 60px rgba(0,0,0,0.25),
-                0 0 40px rgba(255, 107, 157, 0.3),
+                0 0 40px rgba(192, 132, 252, 0.4),
                 inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
         .reason-number {
             font-family: 'Great Vibes', cursive;
             font-size: 3.5em;
-            background: linear-gradient(45deg, #ff6b9d, #74b9ff);
+            background: linear-gradient(45deg, #c084fc, #a855f7, #8b5cf6, #e879f9);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 15px;
             text-align: center;
+            font-weight: 700;
+            text-shadow: 
+                2px 2px 0px rgba(255, 255, 255, 0.8),
+                4px 4px 8px rgba(0, 0, 0, 0.3);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            animation: numberShine 4s ease-in-out infinite alternate;
+            position: relative;
+        }
+        
+        .reason-number::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 1em;
+            z-index: -1;
+            text-shadow: none;
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes numberShine {
+            0% { 
+                background-position: 0% 50%;
+                filter: brightness(1) contrast(1.2);
+            }
+            100% { 
+                background-position: 100% 50%;
+                filter: brightness(1.3) contrast(1.5);
+            }
         }
 
         .reason-text {
@@ -222,11 +254,11 @@
         }
 
         .reason-text .highlight {
-            color: #ff6b9d;
+            color: #e879f9;
             font-weight: 600;
             text-shadow: 
                 1px 1px 3px rgba(0,0,0,0.5),
-                0 0 15px rgba(255, 107, 157, 0.8);
+                0 0 15px rgba(232, 121, 249, 0.8);
         }
 
         /* Mensaje final */
@@ -241,7 +273,7 @@
             border: 2px solid rgba(255, 255, 255, 0.2);
             box-shadow: 
                 0 25px 50px rgba(0,0,0,0.2),
-                0 0 60px rgba(255, 107, 157, 0.2);
+                0 0 60px rgba(192, 132, 252, 0.3);
         }
 
         .final-text {
@@ -256,30 +288,29 @@
         .signature {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5em;
-            color: #ff6b9d;
+            color: #000000;
             text-shadow: 
-                2px 2px 4px rgba(0,0,0,0.5),
-                0 0 25px rgba(255, 107, 157, 1);
+                2px 2px 4px rgb(255, 255, 255),
+                0 0 25px rgb(255, 255, 255);
             animation: signatureGlow 4s ease-in-out infinite alternate;
         }
 
         @keyframes signatureGlow {
             0% { 
-                filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.6));
+                filter: drop-shadow(0 0 15px rgba(232, 121, 249, 0.6));
                 transform: scale(1);
             }
             100% { 
-                filter: drop-shadow(0 0 25px rgba(255, 107, 157, 1));
+                filter: drop-shadow(0 0 25px rgba(232, 121, 249, 1));
                 transform: scale(1.05);
             }
         }
 
-        /* Botón de regreso */
         .back-button {
             position: fixed;
             top: 30px;
             left: 30px;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 107, 157, 0.3));
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(192, 132, 252, 0.3));
             backdrop-filter: blur(15px);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -298,9 +329,38 @@
         }
 
         .back-button:hover {
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 107, 157, 0.5));
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(192, 132, 252, 0.5));
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 15px 35px rgba(192, 132, 252, 0.5);
+        }
+
+        /* Control de música */
+        .music-control {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(192, 132, 252, 0.3));
+            backdrop-filter: blur(15px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        .music-control:hover {
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(192, 132, 252, 0.5));
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(192, 132, 252, 0.5);
         }
 
         /* Responsive */
@@ -364,10 +424,23 @@
                 padding: 12px 20px;
                 font-size: 0.9em;
             }
+
+            .music-control {
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Audio de fondo -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="https://www.dropbox.com/scl/fi/mz1t5no9fae05titetgvy/MV-MeloMance-Love-Maybe-OST-A-Business-Proposal-OST-Special-Track.mp3?rlkey=qxu06wtfeqft7zetkhagrio86&st=1wx7o988&dl=1" type="audio/mpeg">
+    </audio>
+    
     <!-- Efectos de fondo -->
     <div class="floating-elements" id="floatingElements"></div>
     <div class="light-rays"></div>
@@ -377,16 +450,20 @@
         <span>🌸</span> Regresar
     </a>
     
+    <!-- Control de música -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+        🎵
+    </div>
+    
     <!-- Contenido principal -->
     <div class="main-container">
         <!-- Header -->
         <div class="header-section">
-            <div class="age-display">21</div>
-            <h1 class="main-title">Razones por las que eres increíble</h1>
+            <h1 class="main-title">21 Razones</h1>
             <div class="intro-message">
                 Hoy cumples 21 años y quiero celebrar no solo tu cumpleaños, 
                 sino también la persona maravillosa que eres. Aquí tienes 21 razones 
-                que describen por qué iluminas mi mundo cada día ✨
+                que describen la persona increíble que eres ✨
             </div>
         </div>
         
@@ -394,7 +471,7 @@
         <div class="reasons-grid">
             <div class="reason-card">
                 <div class="reason-number">1</div>
-                <div class="reason-text">Tu <span class="highlight">sonrisa</span> puede cambiar completamente mi día más difícil</div>
+                <div class="reason-text">Tu <span class="highlight">sonrisa</span> puede cambiar el día más difícil</div>
             </div>
             
             <div class="reason-card">
@@ -414,7 +491,7 @@
             
             <div class="reason-card">
                 <div class="reason-number">5</div>
-                <div class="reason-text">Tu <span class="highlight">risa</span> es la melodía más hermosa que existe en mi mundo</div>
+                <div class="reason-text">Tu <span class="highlight">risa</span> levanta el ánimo a cualquiera</div>
             </div>
             
             <div class="reason-card">
@@ -424,12 +501,12 @@
             
             <div class="reason-card">
                 <div class="reason-number">7</div>
-                <div class="reason-text">Tu <span class="highlight">determinación</span> me enseña que todo es posible con esfuerzo</div>
+                <div class="reason-text">Tu <span class="highlight">determinación</span> demuestra que con esfuerzo todo se puede lograr</div>
             </div>
             
             <div class="reason-card">
                 <div class="reason-number">8</div>
-                <div class="reason-text">Eres <span class="highlight">valiente</span> enfrentando tus miedos como una verdadera guerrera</div>
+                <div class="reason-text">Eres muy <span class="highlight">tierna</span> cuando me dices que no haga bullyng a los demas en los jueguitos (spoiler : se lo merecen)</div>
             </div>
             
             <div class="reason-card">
@@ -444,7 +521,7 @@
             
             <div class="reason-card">
                 <div class="reason-number">11</div>
-                <div class="reason-text">Tu <span class="highlight">lealtad</span> es inquebrantable como el vínculo entre Tanjiro y Nezuko</div>
+                <div class="reason-text">Eres <span class="highlight">increible</span>, te esfuerzas mucho en tu crecimiento personal y profesional, algo que admiro demasiado</div>
             </div>
             
             <div class="reason-card">
@@ -459,7 +536,7 @@
             
             <div class="reason-card">
                 <div class="reason-number">14</div>
-                <div class="reason-text">Tienes una <span class="highlight">intuición</span> increíble que siempre te guía por el camino correcto</div>
+                <div class="reason-text">Tu <span class="highlight">curiosidad</span> es encantadora, aveces pienso que hablo sobre alguna tontería pero tu me haces entender que no es tontería porque demuestras interes en ello, me encanta eso de ti</div>
             </div>
             
             <div class="reason-card">
@@ -469,12 +546,12 @@
             
             <div class="reason-card">
                 <div class="reason-number">16</div>
-                <div class="reason-text">Eres <span class="highlight">resiliente</span> como una flor que crece hermosa después de la tormenta</div>
+                <div class="reason-text">Tu <span class="highlight">apoyo</span> hace una gran diferencia en la vida de quienes te rodean</div>
             </div>
             
             <div class="reason-card">
                 <div class="reason-number">17</div>
-                <div class="reason-text">Tu <span class="highlight">compasión</span> sana corazones rotos sin que te des cuenta</div>
+                <div class="reason-text">Tu <span class="highlight">compasión</span> logra que los demás se sientan comprendidos</div>
             </div>
             
             <div class="reason-card">
@@ -484,7 +561,7 @@
             
             <div class="reason-card">
                 <div class="reason-number">19</div>
-                <div class="reason-text">Tu <span class="highlight">presencia</span> convierte cualquier lugar en un hogar lleno de amor</div>
+                <div class="reason-text">Tu <span class="highlight">presencia</span> hace que todo sea más llevadero y positivo</div>
             </div>
             
             <div class="reason-card">
@@ -494,7 +571,7 @@
             
             <div class="reason-card">
                 <div class="reason-number">21</div>
-                <div class="reason-text">Tu <span class="highlight">amor</span> ha transformado mi vida de maneras que jamás imaginé posibles</div>
+                <div class="reason-text">Bueno, quizas las 20 anteriores no te sorprendan, despues de todo eres  <span class="highlight">Samantha Solange Lindo Boza</span>, no hay nadie mas como tú</div>
             </div>
         </div>
         
@@ -516,10 +593,38 @@
     </div>
 
     <script>
-        // Crear elementos flotantes
+        let musicPlaying = false;
+        const music = document.getElementById('backgroundMusic');
+        const musicControl = document.getElementById('musicControl');
+
+        function playMusic() {
+            music.volume = 0.5; // Volumen al 50%
+            music.play().then(() => {
+                musicPlaying = true;
+                musicControl.innerHTML = '🔊';
+                musicControl.title = 'Pausar música';
+            }).catch(error => {
+                console.log('Error al reproducir música:', error);
+                // En caso de error, mostrar el control para que el usuario pueda activar manualmente
+                musicControl.innerHTML = '🎵';
+                musicControl.title = 'Reproducir música';
+            });
+        }
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+                musicControl.innerHTML = '🎵';
+                musicControl.title = 'Reproducir música';
+            } else {
+                playMusic();
+            }
+        }
+
         function createFloatingElements() {
             const container = document.getElementById('floatingElements');
-            const elements = ['💖', '💕', '💗', '💝', '💘', '💞', '🌸', '✨', '⭐', '🎂', '🎉', '🎈', '💐', '🦋'];
+            const elements = ['💜', '💕', '💗', '💝', '💘', '💞', '🌸', '✨', '⭐', '🎂', '🎉', '🎈', '💐', '🦋'];
             
             setInterval(() => {
                 if (container.children.length < 12) {
@@ -542,7 +647,6 @@
             }, 1500);
         }
 
-        // Efecto de entrada para las tarjetas
         function animateCards() {
             const cards = document.querySelectorAll('.reason-card');
             
@@ -565,7 +669,6 @@
             });
         }
 
-        // Efecto especial para el número 21
         function animate21() {
             const ageDisplay = document.querySelector('.age-display');
             
@@ -577,9 +680,8 @@
             }, 4000);
         }
 
-        // Efecto de confeti al cargar
         function createConfetti() {
-            const colors = ['#ff6b9d', '#74b9ff', '#a29bfe', '#fd79a8', '#fdcb6e', '#6c5ce7'];
+            const colors = ['#c084fc', '#a855f7', '#8b5cf6', '#e879f9', '#ddd6fe', '#7c3aed'];
             
             for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
@@ -619,21 +721,46 @@
             }
         }
 
-        // Inicializar todo
+        // Intentar reproducir música automáticamente al cargar la página
+        function initMusic() {
+            // Esperar un poco para que la página cargue completamente
+            setTimeout(() => {
+                playMusic();
+            }, 1000);
+        }
+
+        // También intentar reproducir música cuando el usuario interactúe con la página
+        function enableMusicOnInteraction() {
+            const playOnInteraction = () => {
+                if (!musicPlaying) {
+                    playMusic();
+                }
+                // Remover los event listeners después del primer uso
+                document.removeEventListener('click', playOnInteraction);
+                document.removeEventListener('touchstart', playOnInteraction);
+                document.removeEventListener('keydown', playOnInteraction);
+            };
+            
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('touchstart', playOnInteraction);
+            document.addEventListener('keydown', playOnInteraction);
+        }
+
         window.onload = function() {
             createFloatingElements();
             animateCards();
             animate21();
             
-            // Confeti de bienvenida
+            // Inicializar música
+            initMusic();
+            enableMusicOnInteraction();
+            
             setTimeout(createConfetti, 1000);
         }
 
-        // Smooth scroll para una mejor experiencia
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.3;
-            
             const lightRays = document.querySelector('.light-rays');
             lightRays.style.transform = `translateY(${rate}px)`;
         });

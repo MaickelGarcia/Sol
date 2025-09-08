@@ -333,6 +333,28 @@
             }
         }
 
+        /* Notificación de música */
+        .music-notification {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 107, 157, 0.95);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2em;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .music-notification.show {
+            opacity: 1;
+        }
+
         /* Responsive */
         @media (max-width: 480px) {
             .birthday-card {
@@ -394,6 +416,14 @@
         </div>
     </div>
 
+    <!-- Notificación de música -->
+    <div id="musicNotification" class="music-notification">
+        🎵 Música activada - ¡Disfruta! 🎵
+    </div>
+
+    <!-- Script principal -->
+    <script src="script.js"></script>
+    
     <script>
         // Función principal - ahora redirige al quiz
         function abrirTarjeta() {
@@ -506,10 +536,41 @@
             }
         }
 
+        // Mostrar notificación de música
+        function showMusicNotification(message) {
+            const notification = document.getElementById('musicNotification');
+            if (notification) {
+                notification.textContent = message;
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Función para activar música con interacción del usuario
+        function activateMusic() {
+            if (window.musicManager) {
+                window.musicManager.playMusic().then(success => {
+                    if (success) {
+                        showMusicNotification('🎵 Música activada - ¡Disfruta! 🎵');
+                        console.log('🎵 Música iniciada exitosamente');
+                    }
+                }).catch(error => {
+                    console.log('⚠️ No se pudo activar la música automáticamente');
+                });
+            }
+        }
+
         // Inicializar todo
         window.onload = function() {
             createSakura();
             createFireflies();
+            
+            // Intentar activar música después de un breve momento
+            setTimeout(() => {
+                activateMusic();
+            }, 1000);
             
             // Efecto de bienvenida
             setTimeout(() => {
@@ -545,6 +606,20 @@
                     }, i * 200);
                 }
             }, 1500);
+
+            // Agregar listener para activar música con cualquier clic
+            document.addEventListener('click', function activateMusicOnClick() {
+                activateMusic();
+                // Solo ejecutar una vez
+                document.removeEventListener('click', activateMusicOnClick);
+            }, { once: true });
+
+            // También agregar listeners de teclado
+            document.addEventListener('keydown', function activateMusicOnKey() {
+                activateMusic();
+                // Solo ejecutar una vez
+                document.removeEventListener('keydown', activateMusicOnKey);
+            }, { once: true });
         }
     </script>
 </body>
